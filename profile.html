@@ -3,11 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Index / Login</title>
+    <title>Profile</title>
+    <link href="styles.css" rel="stylesheet" />
     <link rel="stylesheet" href="dist/css/index.css" />
-    <script
-      src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
-      defer></script>
   </head>
   <body>
     <header>
@@ -54,34 +52,37 @@
     </header>
 
     <main>
-      <form action="profile.html" method="GET">
-        <h1>Login</h1>
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label"
-            >Email address</label
-          >
-          <input
-            type="email"
-            class="form-control"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp" />
-          <div id="emailHelp" class="form-text">
-            We'll never share your email with anyone else.
+      <div class="card-holder">
+        <div class="card" style="width: 18rem">
+          <h1>Posts</h1>
+          <img
+            src="images/thumbnail1.png"
+            class="card-img-top"
+            alt="profile1" />
+          <div class="card-body">
+            <h5 class="card-title">Lucy Lulu</h5>
+            <p class="card-text">
+              Crafts enchanting scarves, teddy bears, and hats, infusing warmth
+              and creativity into every stitch of her knitting.
+            </p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Age: 32</li>
+            <li class="list-group-item">Loves to knit babyclothes.</li>
+            <li class="list-group-item">Use merino wool most frequently.</li>
+          </ul>
+          <div class="card-body">
+            <a href="#" class="card-link">Follow</a>
+            <a href="#" class="card-link">Unfollow</a>
           </div>
         </div>
-        <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">Password</label>
-          <input
-            type="password"
-            class="form-control"
-            id="exampleInputPassword1"
-            aria-describedby="passwordHelp" />
-          <div id="passwordHelp" class="form-text">
-            Minimum length of 8 characters.
-          </div>
-        </div>
-        <button type="Login" class="btn btn-primary">Login</button>
-      </form>
+
+      <!--<img
+        src="images/thumbnail1.png"
+        class="img-thumbnail"
+        alt="user profile picture" />-->
     </main>
+
+    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
