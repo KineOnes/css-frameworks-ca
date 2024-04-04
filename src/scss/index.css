@@ -1,4 +1,10 @@
 @charset "UTF-8";
+body {
+  font: 100% Helvetica, sans-serif;
+  color: #333;
+  max-width: 700px;
+}
+
 /*!
  * Bootstrap  v5.3.3 (https://getbootstrap.com/)
  * Copyright 2011-2024 The Bootstrap Authors
@@ -4350,7 +4356,7 @@ textarea.form-control-lg {
   --bs-card-cap-color: ;
   --bs-card-height: ;
   --bs-card-color: ;
-  --bs-card-bg: rgb(241, 178, 220);
+  --bs-card-bg: rgb(167, 181, 254);
   --bs-card-img-overlay-padding: 1rem;
   --bs-card-group-margin: 0.75rem;
   position: relative;
@@ -11965,26 +11971,40 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+/*
 main {
-  max-width: 700px;
-  margin: 0 auto;
+    max-width: 700px;
+    margin: 0 auto;
 }
 
 body {
-  background-color: rgb(255, 255, 255);
+    background-color: rgba(84, 55, 134, 1);
 }
 
 .btn {
-  background-color: rgb(228, 195, 142);
+    background-color: $primary;
 }
 
 .create-post {
-  background-color: rgb(241, 178, 220);
-  padding: 5px;
-  border-radius: 5px;
-  margin: 5px;
+    background-color: rgba(167, 181, 254, 1);
+    padding: 10px;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+.card {
+    padding: 10px;
+    border-radius: 5px;
+    margin: 5px;
 }
 
 .title {
-  text-align: center;
-}/*# sourceMappingURL=index.css.map */
+    text-align: center;
+}
+
+.form-background {
+    background-color: rgba(167, 181, 254, 1);
+    padding: 10px;
+    border-radius: 5px;
+    margin: 5px;
+}*//*# sourceMappingURL=index.css.map */

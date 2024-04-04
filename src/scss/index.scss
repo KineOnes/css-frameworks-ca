@@ -1,7 +1,7 @@
 // insert overrides bellow
 //$card-bg: blue;
 $list-group-bg: rgb(255, 234, 248);
-$card-bg: rgb(241, 178, 220);
+$card-bg: rgba(167, 181, 254, 1);
 
 
 //$bs-primary: teal;
@@ -11,18 +11,28 @@ $primary: rgb(228, 195, 142, 1);
 //$btn-outline-success: #198754;
 $btn-outline-success: rgb(251, 205, 212, 1);
 
+// _base.scss
+$font-stack: Helvetica, sans-serif;
+$primary-color: #333;
+
+body {
+  font: 100% $font-stack;
+  color: $primary-color;
+  max-width: 700px;
+}
+
 
 
 @import "../../node_modules/bootstrap/scss/bootstrap";
 
-
+/*
 main {
     max-width: 700px;
     margin: 0 auto;
 }
 
 body {
-    background-color: rgb(255, 255, 255);
+    background-color: rgba(84, 55, 134, 1);
 }
 
 .btn {
@@ -30,8 +40,14 @@ body {
 }
 
 .create-post {
-    background-color: rgb(241, 178, 220);
-    padding: 5px;
+    background-color: rgba(167, 181, 254, 1);
+    padding: 10px;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+.card {
+    padding: 10px;
     border-radius: 5px;
     margin: 5px;
 }
@@ -39,3 +55,10 @@ body {
 .title {
     text-align: center;
 }
+
+.form-background {
+    background-color: rgba(167, 181, 254, 1);
+    padding: 10px;
+    border-radius: 5px;
+    margin: 5px;
+}*/
