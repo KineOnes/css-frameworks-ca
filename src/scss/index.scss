@@ -1,6 +1,6 @@
 // insert overrides bellow
 //$card-bg: blue;
-$list-group-bg: rgb(255, 234, 248);
+$list-group-bg: rgba(167, 181, 254, 1);
 $card-bg: rgba(167, 181, 254, 1);
 
 
@@ -18,17 +18,22 @@ $primary-color: #333;
 body {
   font: 100% $font-stack;
   color: $primary-color;
-  max-width: 700px;
+  text-align: center; /* Center align all content */
 }
 
-
-
-@import "../../node_modules/bootstrap/scss/bootstrap.scss"; /* added .scss to this link , teacher did in teams */
-
-/*
 main {
+    max-width: 700px; /* Set maximum width of main element */
+    margin: 0 auto; /* Center main element horizontally */
+  }
+
+
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+
+
+/*main {
     max-width: 700px;
     margin: 0 auto;
+    text-align: center;
 }
 
 body {
@@ -44,14 +49,14 @@ body {
     padding: 10px;
     border-radius: 5px;
     margin: 5px;
-}
+}*/
 
 .card {
     padding: 10px;
     border-radius: 5px;
     margin: 5px;
 }
-
+/*
 .title {
     text-align: center;
 }

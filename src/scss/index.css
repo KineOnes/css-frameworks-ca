@@ -2,7 +2,12 @@
 body {
   font: 100% Helvetica, sans-serif;
   color: #333;
-  max-width: 700px;
+  text-align: center; /* Center align all content */
+}
+
+main {
+  max-width: 700px; /* Set maximum width of main element */
+  margin: 0 auto; /* Center main element horizontally */
 }
 
 /*!
@@ -4976,7 +4981,7 @@ textarea.form-control-lg {
 
 .list-group {
   --bs-list-group-color: var(--bs-body-color);
-  --bs-list-group-bg: rgb(255, 234, 248);
+  --bs-list-group-bg: rgb(167, 181, 254);
   --bs-list-group-border-color: var(--bs-border-color);
   --bs-list-group-border-width: var(--bs-border-width);
   --bs-list-group-border-radius: var(--bs-border-radius);
@@ -4988,7 +4993,7 @@ textarea.form-control-lg {
   --bs-list-group-action-active-color: var(--bs-body-color);
   --bs-list-group-action-active-bg: var(--bs-secondary-bg);
   --bs-list-group-disabled-color: var(--bs-secondary-color);
-  --bs-list-group-disabled-bg: rgb(255, 234, 248);
+  --bs-list-group-disabled-bg: rgb(167, 181, 254);
   --bs-list-group-active-color: #fff;
   --bs-list-group-active-bg: rgb(228, 195, 142);
   --bs-list-group-active-border-color: rgb(228, 195, 142);
@@ -11971,11 +11976,10 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
-/* added .scss to this link , teacher did in teams */
-/*
-main {
+/*main {
     max-width: 700px;
     margin: 0 auto;
+    text-align: center;
 }
 
 body {
@@ -11991,14 +11995,14 @@ body {
     padding: 10px;
     border-radius: 5px;
     margin: 5px;
-}
-
+}*/
 .card {
-    padding: 10px;
-    border-radius: 5px;
-    margin: 5px;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 5px;
 }
 
+/*
 .title {
     text-align: center;
 }
