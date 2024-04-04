@@ -3,10 +3,15 @@
 $list-group-bg: rgba(167, 181, 254, 1);
 $card-bg: rgba(167, 181, 254, 1);
 
+//$body-bg: $white !default;
+$body-bg: rgba(84, 55, 134, 1);
+
+
 
 //$bs-primary: teal;
-
 $primary: rgb(228, 195, 142, 1);
+
+
 
 //$btn-outline-success: #198754;
 $btn-outline-success: rgb(251, 205, 212, 1);
@@ -28,42 +33,3 @@ main {
 
 
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";
-
-
-/*main {
-    max-width: 700px;
-    margin: 0 auto;
-    text-align: center;
-}
-
-body {
-    background-color: rgba(84, 55, 134, 1);
-}
-
-.btn {
-    background-color: $primary;
-}
-
-.create-post {
-    background-color: rgba(167, 181, 254, 1);
-    padding: 10px;
-    border-radius: 5px;
-    margin: 5px;
-}*/
-
-.card {
-    padding: 10px;
-    border-radius: 5px;
-    margin: 5px;
-}
-/*
-.title {
-    text-align: center;
-}
-
-.form-background {
-    background-color: rgba(167, 181, 254, 1);
-    padding: 10px;
-    border-radius: 5px;
-    margin: 5px;
-}*/
