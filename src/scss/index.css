@@ -5,7 +5,7 @@ body {
   text-align: center; /* Center align all content */
 }
 
-main {
+main, .nav {
   max-width: 700px; /* Set maximum width of main element */
   margin: 0 auto; /* Center main element horizontally */
   margin-top: 10px;
@@ -15,6 +15,15 @@ main {
   background-color: rgb(167, 181, 254);
   padding: 10px;
   border-radius: 5px;
+}
+
+.card-profile {
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.card-img-top {
+  max-width: 200px;
 }
 
 .title {

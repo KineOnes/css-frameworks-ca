@@ -24,24 +24,31 @@ body {
   text-align: center; /* Center align all content */
 }
 
-
-main {
+main, .nav {
     max-width: 700px; /* Set maximum width of main element */
     margin: 0 auto; /* Center main element horizontally */
     margin-top: 10px;
   }
 
-.create-post, .card, .form-background {
+.create-post, .card,  .form-background {
     background-color: rgba(167, 181, 254, 1);
     padding: 10px;
     border-radius: 5px;
 }
- .title {
+
+.card-profile {
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.card-img-top {
+    max-width: 200px;
+}
+ 
+.title {
     color:rgb(134, 103, 219);
     text-align: center;
  }
-
-
 
 
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";
