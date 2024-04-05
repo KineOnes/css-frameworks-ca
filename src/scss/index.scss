@@ -4,13 +4,10 @@ $list-group-bg: rgba(167, 181, 254, 1);
 $card-bg: rgba(167, 181, 254, 1);
 
 //$body-bg: $white !default;
-$body-bg: rgba(84, 55, 134, 1);
-
-
+//$body-bg: rgba(84, 55, 134, 1);
 
 //$bs-primary: teal;
-$primary: rgb(228, 195, 142, 1);
-
+$primary: rgb(248, 197, 116);
 
 
 //$btn-outline-success: #198754;
@@ -18,7 +15,8 @@ $btn-outline-success: rgb(251, 205, 212, 1);
 
 // _base.scss
 $font-stack: Helvetica, sans-serif;
-$primary-color: #333;
+//$primary-color: #333;
+$primary-color: #ffffff;
 
 body {
   font: 100% $font-stack;
@@ -26,10 +24,24 @@ body {
   text-align: center; /* Center align all content */
 }
 
+
 main {
     max-width: 700px; /* Set maximum width of main element */
     margin: 0 auto; /* Center main element horizontally */
+    margin-top: 10px;
   }
+
+.create-post, .card, .form-background {
+    background-color: rgba(167, 181, 254, 1);
+    padding: 10px;
+    border-radius: 5px;
+}
+ .title {
+    color:rgb(134, 103, 219);
+    text-align: center;
+ }
+
+
 
 
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";

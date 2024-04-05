@@ -56,7 +56,9 @@
     <main>
       <div class="form-background">
         <form action="profile.html" method="GET">
-          <h1>Login</h1>
+          <div class="title">
+            <h1>Login</h1>
+          </div>
           <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label"
               >Email address</label
@@ -83,9 +85,17 @@
               Minimum length of 8 characters.
             </div>
           </div>
-          <button type="Login" class="btn btn-primary">Login</button>
+          <div class="d-grid gap-2 col-6 mx-auto">
+            <a href="profile.html" class="btn btn-primary" type="button"
+              >Login</a
+            >
+            <a href="profile.html" class="btn btn-primary" type="button"
+              >Register</a
+            >
+          </div>
         </form>
       </div>
     </main>
+    <footer></footer>
   </body>
 </html>
