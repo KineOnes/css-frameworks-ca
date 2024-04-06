@@ -3,6 +3,7 @@ body {
   font: 100% Helvetica, sans-serif;
   color: #ffffff;
   text-align: center; /* Center align all content */
+  margin: 0;
 }
 
 main, .nav {
