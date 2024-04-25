@@ -56,6 +56,27 @@
     </header>
 
     <main class="container flex-grow-1" style="max-width: 700px">
+      <div class="row justify-content-center">
+        <div class="title d-flex justify-content-center mt-3 mb-3">
+          <h1>Login</h1>
+        </div>
+        <div class="col-12 col md-6">
+          
+
+          <form >
+              <div class="form-group mb-3">
+                <label for="name">Name</label>
+                <input class="form-control" type="text" pattern="^[\w]+$" required name="name">
+              </div>
+
+              <div class="form-group mb-3">
+                <label for="password">Password</label>
+                <input class="form-control" required  type="password" name="password" minlength="8">
+              </div>
+
+              <button class="btn btn-primary">Login</button>
+          
+      <!-- NEW FORM WITH VALIDATION 
       <div class="form-background bg-secondary border rounded-3 mt-3">
         <form action="profile.html" method="GET">
           <div class="title d-flex justify-content-center mt-3 mb-3">
@@ -96,7 +117,12 @@
             >
           </div>
         </form>
-      </div>
+      </div>-->
+      <!-- NEW FORM WITH VALIDATION -->
+
+
     </main>
+
+    <script src="script.js/index.js"></script>
   </body>
 </html>
