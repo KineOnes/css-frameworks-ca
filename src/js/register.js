@@ -2,6 +2,8 @@ const API_BASE_URL = "https://api.noroff.dev/api/v1";
 
 const API_REGISTER_URL = `${API_BASE_URL}/social/auth/register`;
 
+const API_LOGIN_URL = `${API_BASE_URL}/social/auth/login`;
+
 /**
  * API call to register a new user
  * @param {string} url 
@@ -62,6 +64,6 @@ async function loginUser(url, userData) {
     }
 }
 
-const loginUrl = `${API_BASE_URL}/social/auth/login`;
+//const loginUrl = `${API_BASE_URL}/social/auth/login`;//
 
 loginUser(loginUrl);
