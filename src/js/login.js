@@ -14,6 +14,8 @@ async function loginUser(url, userData) {
         const response = await fetch(url, postData);
         const json = await response.json();
 
+        console.log(json);
+
         if(!response.ok) {
             // TODO display error message with reason to the user
         } else {
