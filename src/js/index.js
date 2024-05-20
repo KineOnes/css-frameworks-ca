@@ -4,7 +4,8 @@ module.exports = {myValue};
 
 //Default export
 // * We can name it whatever we want
-import Login from `./login.js`
+import Login, {loginUser} from `./login.js`
 
 // Named export
-import {loginUser} from `./login.js`
+// THIS LINE OF CODE WAS ADDED TO THE IMPORT ABOVE, JUST BY ADDING A COMMA:
+// import {loginUser} from `./login.js`
