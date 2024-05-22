@@ -4,10 +4,10 @@ export function createPostTemplate(postData){
     const avatar = postData.author.avatar || "/images/userImageNoste.png";
 
     const post = document.createElement("div");
-    post.classList.add("container", "d-flex", "justify-content-center", "mt-3");
+    post.classList.add("container", "justify-content-center", "mt-3");  // TODO: Remove d-flex?
 
     const card = document.createElement("div");
-    card.classList.add("card", "mb-3");
+    card.classList.add("card", "mb-3", "mt-3");
     card.style.maxWidth = "700px";
     
 
@@ -16,11 +16,11 @@ export function createPostTemplate(postData){
 
     const imageColumn = document.createElement("div");
     imageColumn.classList.add("col-md-4");
-    imageColumn.style.marginRight = "15px";  // Add space between image and text
 
     const postImage = document.createElement("img");
     postImage.classList.add("img-fluid", "rounded-circle", "pt-n4", "mt-3", "mx-3");
     postImage.style.width = "200px";
+    postImage.style.height = "200px";
     postImage.src = `${avatar}`;
     postImage.alt = `${postData.author.name} profile image`;
 
@@ -116,11 +116,13 @@ export function createPostTemplate(postData){
     arrowButtonSvg.append(arrowButtonPath1, arrowButtonPath2);
     arrowButton.append(arrowButtonSvg);
 
+    const date = new Date(postData.updated).toDateString();
+
     const lastUpdated = document.createElement("p");
     lastUpdated.classList.add("card-text");
     const lastUpdatedText = document.createElement("small");
     lastUpdatedText.classList.add("text-body-secondary");
-    lastUpdatedText.textContent = "TODO";
+    lastUpdatedText.textContent = `Last updated ${date}`;
     lastUpdated.append(lastUpdatedText);
 
     cardBody.append(cardTitle, cardText, loveButton, commentButton, arrowButton, lastUpdated);

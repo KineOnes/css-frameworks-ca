@@ -1,6 +1,6 @@
 import { setLoginFormListener } from "./handlers/login.mjs";
 import { setRegistrationFormListener } from "./handlers/registration.mjs";
-import { handleAllPosts } from "./handlers/posts.mjs";
+import { handleAllPosts, setSearchFormListener } from "./handlers/posts.mjs";
 
 import { createProfileTemplate } from "./templates/profile.mjs";
 
@@ -28,8 +28,9 @@ function main() {
             break;
         
         case "/feed/":
-            // TODO: set listeners for "load more posts", "create post", etc..
+            // TODO: set listeners for "load more posts", "create post", "filter posts", "search posts"
             handleAllPosts();
+            setSearchFormListener();
             break;
 
 		default:
