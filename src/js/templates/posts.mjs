@@ -4,21 +4,20 @@ export function createPostTemplate(postData){
     const avatar = postData.author.avatar || "/images/userImageNoste.png";
 
     const post = document.createElement("div");
-    post.classList.add("container", "justify-content-center", "mt-3");  // TODO: Remove d-flex?
+    post.classList.add("container", "d-flex", "justify-content-center", "mt-3");
 
     const card = document.createElement("div");
-    card.classList.add("card", "mb-3", "mt-3");
+    card.classList.add("card", "flex-fill","my-3");
     card.style.maxWidth = "700px";
-    
 
     const row = document.createElement("div");
-    row.classList.add("row", "g-0");
+    row.classList.add("row");
 
     const imageColumn = document.createElement("div");
     imageColumn.classList.add("col-md-4");
 
     const postImage = document.createElement("img");
-    postImage.classList.add("img-fluid", "rounded-circle", "pt-n4", "mt-3", "mx-3");
+    postImage.classList.add("img-fluid", "rounded-circle", "pt-n4", "m-3");
     postImage.style.width = "200px";
     postImage.style.height = "200px";
     postImage.src = `${avatar}`;
