@@ -4,12 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Register</title>
-    <link rel="icon" href="images/beige-knit.png" type="image">
-    <link rel="stylesheet" href="dist/css/index.css" />
-    <script src="src/js/register.js" type="module"></script>
+    <link rel="icon" href="/images/beige-knit.png" type="image">
+    <link rel="stylesheet" href="/dist/css/index.css" />
+    <script src="/src/js/index.mjs" type="module"></script>
    
     <script
-      src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+      src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
       defer></script>
       
   </head>
@@ -21,7 +21,7 @@
       <div class="container">
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
           <div class="container-fluid">
-            <a class="navbar-brand" href="index.html">NØSTE</a>
+            <a class="navbar-brand" href="/">NØSTE</a>
             <button
               class="navbar-toggler"
               type="button"
@@ -73,7 +73,7 @@
 
               <div class="form-group mb-3">
                 <label for="email">Email</label>
-                <input class="form-control" type="email" required pattern="\b[A-Za-z0-9._%+-]+@(noroff\.no|stud\.noroff\.no)\b" required name="email">
+                <input class="form-control" type="email" required pattern="^[\w\-.]+@(stud\.)?noroff\.no$" required name="email">
               </div>
 
               <div class="form-group mb-3">

@@ -4,12 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FEED</title>
-    <link rel="icon" href="images/beige-knit.png" type="image">
-    <link rel="stylesheet" href="dist/css/index.css" />
-    <script src="src/js/login.mjs" type="module"></script>
+    <link rel="icon" href="/images/beige-knit.png" type="image" />
+    <link rel="stylesheet" href="/dist/css/index.css" />
+    <script src="/src/js/index.mjs" type="module"></script>
 
     <script
-      src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+      src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
       defer></script>
   </head>
   <body
@@ -20,7 +20,7 @@
       <div class="container">
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
           <div class="container-fluid">
-            <a class="navbar-brand" href="index.html">NØSTE</a>
+            <a class="navbar-brand" href="/profile">NØSTE</a>
             <button
               class="navbar-toggler"
               type="button"
@@ -34,13 +34,10 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                  <a class="nav-link" href="profile.html">Profile</a>
+                  <a class="nav-link" href="/profile">Profile</a>
                 </li>
                 <li class="nav-item">
-                  <a
-                    class="nav-link active"
-                    aria-current="page"
-                    href="feed.html"
+                  <a class="nav-link active" aria-current="page" href="/feed"
                     >Feed</a
                   >
                 </li>
@@ -91,34 +88,36 @@
       <div class="container" style="max-width: 700px">
         <div class="row">
           <div class="col">
-      <h2 class="title d-flex justify-content-center mt-3">Latest posts</h2>
+            <h2 class="title d-flex justify-content-center mt-3">
+              Latest posts
+            </h2>
+          </div>
+          <div class="col-auto mt-5">
+            <div class="dropdown">
+              <!-- Sort function -->
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Sort
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">With media</a></li>
+                <li><a class="dropdown-item" href="#">Without media</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
-
-      <div class="col-auto mt-5">
-        <div class="dropdown">
-        <!-- Sort function -->
-        <a
-          class="nav-link dropdown-toggle"
-          href="#"
-          role="button"
-          data-bs-toggle="dropdown"
-          aria-expanded="false">
-          Sort
-        </a>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">With media</a></li>
-          <li><a class="dropdown-item" href="#">Without media</a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
 
       <div class="container d-flex justify-content-center mt-3">
         <div class="card mb-3 mt-3" style="max-width: 700px">
           <div class="row g-0">
             <div class="col-md-4">
               <img
-                src="images/thumbnail4.png"
+                src="/images/thumbnail4.png"
                 class="img-fluid rounded-circle pt-n4 mt-3 mx-3"
                 style="width: 200px"
                 alt="profile image" />
@@ -189,7 +188,7 @@
           <div class="row g-0">
             <div class="col-md-4">
               <img
-                src="images/thumbnail2.png"
+                src="/images/thumbnail2.png"
                 class="img-fluid rounded-circle pt-n4 mt-3 mb-3 mx-3"
                 style="width: 200px"
                 alt="profile image" />
@@ -259,7 +258,7 @@
           <div class="row g-0">
             <div class="col-md-4">
               <img
-                src="images/thumbnail5.png"
+                src="/images/thumbnail5.png"
                 class="img-fluid rounded-circle pt-n4 mt-3 mb-3 mx-3"
                 style="width: 200px"
                 alt="profile image" />
@@ -322,6 +321,10 @@
             </div>
           </div>
         </div>
+      </div>
+
+      <div id="feed">
+        <!-- JS generated content -->
       </div>
     </main>
   </body>

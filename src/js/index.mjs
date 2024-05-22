@@ -1,11 +1,31 @@
-const API_BASE_URL = "https://api.noroff.dev/api/v1";
+import { setLoginFormListener } from "./handlers/login.mjs";
+import { setRegistrationFormListener } from "./handlers/registration.mjs";
+import { handleAllPosts } from "./handlers/posts.mjs";
 
-module.exports = {myValue};
+function main() {
+	const path = location.pathname;
 
-//Default export
-// * We can name it whatever we want
-import Login, {loginUser} from `./login.js`
+	switch (path) {
+		case "/":
+			setLoginFormListener();
+			break;
+        
+        case "/profile/registration/":
+            setRegistrationFormListener();
+            break;
+        
+        case "/profile/":
+            // TODO: Do something useful? I.e. filling in the profile info.
+            break;
+        
+        case "/feed/":
+            // TODO: set listeners for "load more posts", "create post", etc..
+            handleAllPosts();
+            break;
 
-// Named export
-// THIS LINE OF CODE WAS ADDED TO THE IMPORT ABOVE, JUST BY ADDING A COMMA:
-// import {loginUser} from `./login.js`
+		default:
+			break;
+	}
+}
+
+main();
