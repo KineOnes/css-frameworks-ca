@@ -2,7 +2,7 @@ import { request } from "./request.mjs";
 
 const action = "?_author=true&_reactions=true&_comments=true";
 
-export async function getAllPosts(accessToken, limit = 10, page = 1) {
+export async function getAllPosts(accessToken, limit = 100, page = 1) {
     try {
         const endpoint = `/social/posts${action}&limit=${limit}&page=${page}`
         const data = {};
