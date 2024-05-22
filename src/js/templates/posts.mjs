@@ -15,6 +15,7 @@ export function createPostTemplate(postData, parent){
 
     const imageColumn = document.createElement("div");
     imageColumn.classList.add("col-md-4");
+    imageColumn.style.marginRight = "15px";  // Add space between image and text
 
     const postImage = document.createElement("img");
     postImage.classList.add("img-fluid", "rounded-circle", "pt-n4", "mt-3", "mx-3");
@@ -39,8 +40,9 @@ export function createPostTemplate(postData, parent){
     cardText.textContent = `${postData.body}`;  // TODO: what if there is no body?
 
     const loveButton = document.createElement("a");
-    loveButton.href = "#";  // TODO: What does this do? Why set to "#"?
+    loveButton.href = "#";  // TODO: What does this do? Why set to "#"? ANSWER: Not supposed to do anything
     loveButton.classList.add("btn", "btn-primary");
+    loveButton.style.marginRight = "10px"; 
 
     const ns = "http://www.w3.org/2000/svg";
     const loveButtonSvg = document.createElementNS(ns, "svg");
@@ -69,6 +71,7 @@ export function createPostTemplate(postData, parent){
     const commentButton = document.createElement("a");
     commentButton.href = "#";  // TODO: What does this do? Why set to "#"?
     commentButton.classList.add("btn", "btn-primary");
+    commentButton.style.marginRight = "10px"; 
 
     const commentButtonSvg = document.createElementNS(ns, "svg");
     commentButtonSvg.setAttribute("width", "16");
