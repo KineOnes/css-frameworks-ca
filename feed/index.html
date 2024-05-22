@@ -85,29 +85,19 @@
         </div>
       </div>
 
-      <div class="container" style="max-width: 700px">
+      <div class="container mt-5" style="max-width: 700px">
         <div class="row">
-          <div class="col mt-5">
-            <h2 class="title d-flex justify-content-center">Latest posts</h2>
+          <div class="col">
+            <h3 class="title">Latest posts</h3>
           </div>
-          <div class="col-auto mt-5">
-            <div class="dropdown">
-              <!-- Sort function -->
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false">
-                Sort
-              </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">With media</a></li>
-                <li><a class="dropdown-item" href="#">Without media</a></li>
-              </ul>
-            </div>
+          <div class="col-auto">
+            <select class="form-select" id="selectForm">
+              <option value="1">All</option>
+              <option value="2">With media</option>
+              <option value="3">Without media</option>
+            </select>
           </div>
-          <form id="searchForm" class="d-flex col-auto mt-5">
+          <form id="searchForm" class="d-flex col">
             <input
               name="searchQuery"
               class="form-control me-2"
