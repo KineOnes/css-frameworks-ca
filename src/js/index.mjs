@@ -2,6 +2,11 @@ import { setLoginFormListener } from "./handlers/login.mjs";
 import { setRegistrationFormListener } from "./handlers/registration.mjs";
 import { handleAllPosts } from "./handlers/posts.mjs";
 
+import { createProfileTemplate } from "./templates/profile.mjs";
+
+import * as storage from "./storage/index.mjs";
+
+
 function main() {
 	const path = location.pathname;
 
@@ -15,7 +20,11 @@ function main() {
             break;
         
         case "/profile/":
-            // TODO: Do something useful? I.e. filling in the profile info.
+            const profile = storage.load("profile");
+            const profileContainer = document.querySelector("#profile");
+            const profileCard = createProfileTemplate(profile);
+            profileContainer.append(profileCard);
+            console.log(profileCard);
             break;
         
         case "/feed/":

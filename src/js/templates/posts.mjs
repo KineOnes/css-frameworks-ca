@@ -1,6 +1,6 @@
 
 // TODO: Add event listeners to the "buttons"
-export function createPostTemplate(postData, parent){
+export function createPostTemplate(postData){
     const avatar = postData.author.avatar || "/images/beige-knit.png";  // TODO: Select default avatar
 
     const post = document.createElement("div");
@@ -9,6 +9,7 @@ export function createPostTemplate(postData, parent){
     const card = document.createElement("div");
     card.classList.add("card", "mb-3");
     card.style.maxWidth = "700px";
+    
 
     const row = document.createElement("div");
     row.classList.add("row", "g-0");
