@@ -1,7 +1,7 @@
 
-// TODO: Add event listeners to the "buttons"
+// TODO: Add event listeners to the "buttons"?
 export function createPostTemplate(postData){
-    const avatar = postData.author.avatar || "/images/beige-knit.png";  // TODO: Select default avatar
+    const avatar = postData.author.avatar || "/images/userImageNoste.png";
 
     const post = document.createElement("div");
     post.classList.add("container", "d-flex", "justify-content-center", "mt-3");

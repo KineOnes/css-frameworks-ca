@@ -1,5 +1,5 @@
 
-function createProfileImageTemplate(image){
+function createProfileImageTemplate(image) {
     const imageContainer = document.createElement("div");
     imageContainer.classList.add("d-flex", "justify-content-center");
 
@@ -14,7 +14,7 @@ function createProfileImageTemplate(image){
     return imageContainer;
 }
 
-function createUserInfoTemplate(){
+function createUserInfoTemplate() {
     const userInfoContainer = document.createElement("div");
     userInfoContainer.classList.add("container", "text-center");
     const userInfoTitleRow = document.createElement("div");
@@ -49,21 +49,13 @@ function createUserInfoTemplate(){
     return userInfoContainer;
 }
 
-export function createProfileTemplate(profileData) {
-    const avatar = profileData.avatar || "/images/beige-knit.png";
-
-    const cardContainer = document.createElement("div");
-    cardContainer.classList.add("card", "mb-3");
-    cardContainer.style.maxWidth = "700px";
-
-    const imageContainer = createProfileImageTemplate(avatar);
-    const userInfoContainer = createUserInfoTemplate();
-
+function createUserDescription(name) {
     const userDescriptionContainer = document.createElement("div");
     userDescriptionContainer.classList.add("card-body");
+    
     const userName = document.createElement("h5");
     userName.classList.add("card-title");
-    userName.textContent = `${profileData.name}`;
+    userName.textContent = `${name}`;
 
     const userAbout = document.createElement("p");
     userAbout.classList.add("card-text");
@@ -71,46 +63,92 @@ export function createProfileTemplate(profileData) {
     userAbout.textContent = "Crafts enchanting scarves, teddy bears, and hats, infusing warmth and creativity into every stitch of her knitting.";
 
     userDescriptionContainer.append(userName, userAbout);
+    return userDescriptionContainer;
+}
 
+// TODO: Add event listeners to the buttons (optional)
+function createButtonsTemplate() {
+    const xmlns = "http://www.w3.org/2000/svg";
 
-    cardContainer.append(imageContainer, userInfoContainer, userDescriptionContainer);
+    const buttonsContainer = document.createElement("div");
+    buttonsContainer.classList.add("d-grid", "gap-2", "d-md-flex", "justify-content-md-end");
+
+    const followButton = document.createElement("button");
+    followButton.classList.add("btn", "btn-primary", "me-md-2");
+    followButton.type = "button";
+    followButton.textContent = "Follow";
+
+    const followButtonSvg = document.createElementNS(xmlns, "svg");
+    followButtonSvg.setAttribute("width", "16");
+    followButtonSvg.setAttribute("height", "16");
+    followButtonSvg.setAttribute("fill", "currentColor");
+    followButtonSvg.setAttribute("class", "bi bi-person-fill-add");
+    followButtonSvg.setAttribute("viewBox", "0 0 16 16");
+    const followButtonPath1 = document.createElementNS(xmlns, "path");
+    followButtonPath1.setAttribute(
+        "d",
+        "M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0m-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"
+    );
+    const followButtonPath2 = document.createElementNS(xmlns, "path");
+    followButtonPath2.setAttribute(
+        "d",
+        "M2 13c0 1 1 1 1 1h5.256A4.5 4.5 0 0 1 8 12.5a4.5 4.5 0 0 1 1.544-3.393Q8.844 9.002 8 9c-5 0-6 3-6 4"
+    );
+
+    followButtonSvg.append(followButtonPath1, followButtonPath2);
+    followButton.append(followButtonSvg);
+
+    const unfollowButton = document.createElement("button");
+    unfollowButton.classList.add("btn", "btn-primary");
+    unfollowButton.type = "button";
+    unfollowButton.textContent = "Unfollow";
+
+    const unfollowButtonSvg = document.createElementNS(xmlns, "svg");
+    unfollowButtonSvg.setAttribute("width", "16");
+    unfollowButtonSvg.setAttribute("height", "16");
+    unfollowButtonSvg.setAttribute("fill", "currentColor");
+    unfollowButtonSvg.setAttribute("class", "bi bi-person-fill-dash");
+    unfollowButtonSvg.setAttribute("viewBox", "0 0 16 16");
+    const unfollowButtonPath1 = document.createElementNS(xmlns, "path");
+    unfollowButtonPath1.setAttribute(
+        "d",
+        "M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7M11 12h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1 0-1m0-7a3 3 0 1 1-6 0 3 3 0 0 1 6 0"
+    );
+    const unfollowButtonPath2 = document.createElementNS(xmlns, "path");
+    unfollowButtonPath2.setAttribute(
+        "d",
+        "M2 13c0 1 1 1 1 1h5.256A4.5 4.5 0 0 1 8 12.5a4.5 4.5 0 0 1 1.544-3.393Q8.844 9.002 8 9c-5 0-6 3-6 4"
+    );
+
+    unfollowButtonSvg.append(unfollowButtonPath1, unfollowButtonPath2);
+    unfollowButton.append(unfollowButtonSvg);
+
+    buttonsContainer.append(followButton, unfollowButton);
+    return buttonsContainer;
+}
+
+export function createProfileTemplate(profileData) {
+    const avatar = profileData.avatar || "/images/userImageNoste.png";
+
+    const cardContainer = document.createElement("div");
+    cardContainer.classList.add("card", "mb-3");
+    cardContainer.style.maxWidth = "700px";
+
+    const imageContainer = createProfileImageTemplate(avatar);
+    const userInfoContainer = createUserInfoTemplate();
+    const userDescriptionContainer = createUserDescription(profileData.name);
+    const buttonsContainer = createButtonsTemplate();
+
+    // TODO: maybe append buttonsContainer in cardContainer?
+    //       If so, then we need to take care of margins right and bottom to
+    //       get the same look and feel.
+    userDescriptionContainer.append(buttonsContainer);
+
+    cardContainer.append(
+        imageContainer,
+        userInfoContainer,
+        userDescriptionContainer
+    );
 
     return cardContainer;
-    /*
-              <div class="card-body">
-                <h5 class="card-title">Lucy Lulu</h5>
-                <p class="card-text">
-                  Crafts enchanting scarves, teddy bears, and hats, infusing warmth
-                  and creativity into every stitch of her knitting.
-                </p>
-                <p class="card-text">
-                  <small class="text-body-secondary">Member since august 2021.</small>
-                </p>
-                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                  <button class="btn btn-primary me-md-2" type="button">
-                    Follow
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="currentColor"
-                      class="bi bi-person-fill-add"
-                      viewBox="0 0 16 16">
-                      <path
-                        d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0m-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
-                      <path
-                        d="M2 13c0 1 1 1 1 1h5.256A4.5 4.5 0 0 1 8 12.5a4.5 4.5 0 0 1 1.544-3.393Q8.844 9.002 8 9c-5 0-6 3-6 4" />
-                    </svg>
-                  </button>
-                  <button class="btn btn-primary" type="button">
-                    Unfollow
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill-dash" viewBox="0 0 16 16">
-                      <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7M11 12h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1 0-1m0-7a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
-                      <path d="M2 13c0 1 1 1 1 1h5.256A4.5 4.5 0 0 1 8 12.5a4.5 4.5 0 0 1 1.544-3.393Q8.844 9.002 8 9c-5 0-6 3-6 4"/>
-                    </svg>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>   */
 }
