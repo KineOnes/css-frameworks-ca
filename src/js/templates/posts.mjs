@@ -2,7 +2,7 @@ import * as storage from "../storage/index.mjs";
 
 const xmlns = "http://www.w3.org/2000/svg";
 
-function editPost(post) {
+function handleEditPost(post) {
     // Title
     // Main content
     // Media?
@@ -10,8 +10,9 @@ function editPost(post) {
     // DOM: lastUpdated, title?, body?
 }
 
-function deletePost(post) {
+function handleDeletePost(post) {
     // TODO: Should ask user for confirmation
+
 }
 
 function createProfileImage(image, name) {
@@ -100,7 +101,7 @@ function createEditButton(post) {
     editButton.append(editButtonIcon);
 
     editButton.addEventListener("click", () => {
-        editPost(post);
+        handleEditPost(post);
     });
 
     return editButton;
@@ -132,7 +133,7 @@ function createDeleteButton(post) {
     deleteButton.append(deleteButtonIcon);
 
     deleteButton.addEventListener("click", () => {
-        deletePost(post);
+        handleDeletePost(post);
     });
 
     return deleteButton;

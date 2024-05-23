@@ -9,7 +9,7 @@ export async function handleAllPosts() {
 
     const response = await getAllPosts(accessToken);
 
-    if (response.success){
+    if (response.success) {
         // TODO: implement filter/search here?
         const posts = response.data;
         const feedContainer = document.querySelector("#feed");
@@ -22,17 +22,24 @@ export async function handleAllPosts() {
     }
 }
 
-export async function handleCreatePost(postData) {
+async function handleCreatePost(postData, feed) {
     try {
         const accessToken = storage.load("accessToken");
         const response = await createPost(postData, accessToken);
 
         if (response.success) {
-            // give user feedback that post was created successfully
-        } else {
-            // give user feedback that we failed to create the post
+            // Apply missing fields not contained in the response
+            response.data.author = storage.load("profile");
+            response.data.reactions = [];
+            response.data.comments = [];
+            response.data.tags = [];
+
+            const postTemplate = createPostTemplate(response.data);
+            feed.prepend(postTemplate);
         }
-    } catch(error) {
+
+        return response.success;
+    } catch (error) {
         console.log(error);
     }
 }
@@ -40,15 +47,19 @@ export async function handleCreatePost(postData) {
 export function setCreatePostFormListener() {
     const form = document.querySelector("#createPostForm");
 
-    if (!form) { throw new Error("setCreatePostFormListener() called, but #createPostForm form element could not be found") }
+    if (!form) { throw new Error("setCreatePostFormListener() called, but #createPostForm id could not be found") }
 
     form.addEventListener("submit", (event) => {
         event.preventDefault();
-        const form = event.target;
-        const formData = new FormData(form);
+        const formData = new FormData(event.target);
         const createPostData = Object.fromEntries(formData.entries());
-        handleCreatePost(createPostData);
-        // TODO: Clear form after post
+        const feedContainer = document.querySelector("#feed");
+        const success = handleCreatePost(createPostData, feedContainer);
+        if (success) {
+            form.reset();
+        } else {
+            // TODO: Notify user that we failed to create the post
+        }
     });
 }
 
@@ -57,8 +68,20 @@ function handleSearchEvent(searchQuery) {
     const posts = feedContainer.children  // HTMLCollection
 
     for (let post of posts) {
-        const title = post.querySelector(".class-title").textContent.toLowerCase();
-        const body = post.querySelector(".card-text").textContent.toLowerCase();
+        var title = post.querySelector(".class-title");
+        var body = post.querySelector(".card-text");
+
+        if (title) {
+            title = title.textContent.toLowerCase();
+        } else {
+            title = "";
+        }
+
+        if (body) {
+            body = body.textContent.toLowerCase();
+        } else {
+            body = "";
+        }
 
         // Match the search term
         // NOTE: zero-length is a special case where we want to show all posts if previously hidden
@@ -76,16 +99,14 @@ function handleSearchEvent(searchQuery) {
 export async function setSearchFormListener() {
     const form = document.querySelector("#searchForm");
 
-    if (!form) { throw new Error("setSearchFormListener() called, but #searchForm form element could not be found") }
+    if (!form) { throw new Error("setSearchFormListener() called, but #searchForm id could not be found") }
 
     // TODO: The button should toggle state between "search" and "reset".
     //       However, if search text is edited before clicking the "reset" button, it should go back to a normal search button.
     form.addEventListener("submit", (event) => {
         event.preventDefault();
-        const form = event.target;
-        const formData = new FormData(form);
+        const formData = new FormData(event.target);
         const searchData = Object.fromEntries(formData.entries());
-        
         handleSearchEvent(searchData.searchQuery.toLowerCase());
     });
 }
@@ -97,14 +118,14 @@ function handleSelectEvent(option) {
     for (let post of posts) {
         const media = post.querySelector(".media");;
 
-        if(option == "media") {
-            if(media) {
+        if (option == "media") {
+            if (media) {
                 post.classList.remove("d-none");
             } else {
                 post.classList.add("d-none");
             }
         } else if (option == "no-media") {
-            if(!media) {
+            if (!media) {
                 post.classList.remove("d-none");
             } else {
                 post.classList.add("d-none");
@@ -120,7 +141,7 @@ function handleSelectEvent(option) {
 export async function setSelectFormListener() {
     const select = document.querySelector("#selectForm");
 
-    if (!select) { throw new Error("setSelectFormListener() called, but #selectForm form element could not be found") }
+    if (!select) { throw new Error("setSelectFormListener() called, but #selectForm id could not be found") }
 
     select.addEventListener("change", (event) => {
         handleSelectEvent(select.value);
