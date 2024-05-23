@@ -1,18 +1,14 @@
 import * as storage from "../storage/index.mjs";
+import { handleDeletePost } from "../handlers/posts.mjs";
 
 const xmlns = "http://www.w3.org/2000/svg";
 
-function handleEditPost(post) {
+async function handleEditPost(post) {
     // Title
     // Main content
     // Media?
     // Should update both the DOM as well as the post in the API database
     // DOM: lastUpdated, title?, body?
-}
-
-function handleDeletePost(post) {
-    // TODO: Should ask user for confirmation
-
 }
 
 function createProfileImage(image, name) {

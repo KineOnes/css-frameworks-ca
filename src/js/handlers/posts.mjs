@@ -1,4 +1,4 @@
-import { getAllPosts, createPost } from "../api/posts.mjs";
+import { getAllPosts, createPost, deletePost } from "../api/posts.mjs";
 import { createPostTemplate } from "../templates/posts.mjs"
 import * as storage from "../storage/index.mjs";
 
@@ -22,6 +22,17 @@ export async function handleAllPosts() {
     }
 }
 
+export async function handleDeletePost(post) {
+    const accessToken = storage.load("accessToken");
+    const response = await deletePost(post.id, accessToken);
+    if (response.success) {
+        window.location.reload();
+    } else {
+        // TODO: Notify user?
+        console.log(response);
+    }
+}
+
 async function handleCreatePost(postData, feed) {
     try {
         const accessToken = storage.load("accessToken");
@@ -36,6 +47,8 @@ async function handleCreatePost(postData, feed) {
 
             const postTemplate = createPostTemplate(response.data);
             feed.prepend(postTemplate);
+
+            // TODO: Replace above code with window.location.reload() instead?
         }
 
         return response.success;
@@ -136,7 +149,6 @@ function handleSelectEvent(option) {
         }
     }
 }
-
 
 export async function setSelectFormListener() {
     const select = document.querySelector("#selectForm");

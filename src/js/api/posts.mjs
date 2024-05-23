@@ -39,7 +39,22 @@ export async function createPost(post, accessToken) {
         const response = await request("/social/posts", "POST", data, accessToken);
         const json = await response.json();
         return { success: response.ok, data: json };
-    } catch(error) {
+    } catch (error) {
+        throw new Error(error);
+    }
+}
+
+export async function deletePost(id, accessToken) {
+    if (!id) { throw new Error("Missing id argument"); }
+    if (!accessToken) { throw new Error("Missing access token"); }
+
+    try {
+        const endpoint = `/social/posts/${id}`;
+        const data = {};
+        const response = await request(endpoint, "DELETE", data, accessToken);
+        const json = await response.json();
+        return { success: response.ok, data: json };
+    } catch (error) {
         throw new Error(error);
     }
 }
