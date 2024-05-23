@@ -6,14 +6,12 @@ function editPost(post) {
     // Title
     // Main content
     // Media?
-
     // Should update both the DOM as well as the post in the API database
     // DOM: lastUpdated, title?, body?
 }
 
 function deletePost(post) {
     // TODO: Should ask user for confirmation
-
 }
 
 function createProfileImage(image, name) {
@@ -141,9 +139,13 @@ function createDeleteButton(post) {
 }
 
 export function createPostTemplate(postData) {
-
     const postContainer = document.createElement("div");
-    postContainer.classList.add("container", "d-flex", "justify-content-center", "mt-3");
+    postContainer.classList.add(
+        "container",
+        "d-flex",
+        "justify-content-center",
+        "mt-3"
+    );
 
     const card = document.createElement("div");
     card.classList.add("card", "flex-fill", "my-3");
@@ -155,7 +157,10 @@ export function createPostTemplate(postData) {
     const profileImageContainer = document.createElement("div");
     profileImageContainer.classList.add("col-md-4");
 
-    const profileImage = createProfileImage(postData.author.avatar, postData.author.name);
+    const profileImage = createProfileImage(
+        postData.author.avatar,
+        postData.author.name
+    );
 
     profileImageContainer.append(profileImage);
 
@@ -213,16 +218,16 @@ export function createPostTemplate(postData) {
         cardBody.append(editButton, deleteButton);
     }
 
+    const cardInfo = document.createElement("p");
     const date = new Date(postData.updated).toDateString();
+    const cardInfoText = document.createElement("small");
+    cardInfoText.style.whiteSpace = "pre-line";
+    cardInfoText.classList.add("text-body-secondary");
+    cardInfoText.textContent = `Created by: ${postData.author.name}
+                                Last updated: ${date}`;
+    cardInfo.append(cardInfoText);
 
-    const lastUpdated = document.createElement("p");
-    lastUpdated.classList.add("card-text");
-    const lastUpdatedText = document.createElement("small");
-    lastUpdatedText.classList.add("text-body-secondary");
-    lastUpdatedText.textContent = `Last updated ${date}`;
-    lastUpdated.append(lastUpdatedText);
-    cardBody.append(lastUpdated);
-
+    cardBody.append(cardInfo);
     cardColumn.append(cardBody);
     row.append(profileImageContainer, cardColumn);
     card.append(row);
