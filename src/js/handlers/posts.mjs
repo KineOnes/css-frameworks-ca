@@ -27,8 +27,6 @@ export async function handleCreatePost(postData) {
         const accessToken = storage.load("accessToken");
         const response = await createPost(postData, accessToken);
 
-        console.log(response);  // TODO: REMOVE ME
-
         if (response.success) {
             // give user feedback that post was created successfully
         } else {
@@ -39,18 +37,18 @@ export async function handleCreatePost(postData) {
     }
 }
 
-export function setCreatePosFormtListener() {
-    const form = document.querySelector("#createForm");
+export function setCreatePostFormListener() {
+    const form = document.querySelector("#createPostForm");
 
-    if (!form) { throw new Error("setCreateFormListener() called, but #createForm form element could not be found") }
+    if (!form) { throw new Error("setCreatePostFormListener() called, but #createPostForm form element could not be found") }
 
     form.addEventListener("submit", (event) => {
         event.preventDefault();
         const form = event.target;
         const formData = new FormData(form);
         const createPostData = Object.fromEntries(formData.entries());
-        
         handleCreatePost(createPostData);
+        // TODO: Clear form after post
     });
 }
 

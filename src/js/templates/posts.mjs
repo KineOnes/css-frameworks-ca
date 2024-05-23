@@ -1,29 +1,165 @@
+import * as storage from "../storage/index.mjs";
 
-// TODO: Add event listeners to the "buttons"?
-export function createPostTemplate(postData){
-    const avatar = postData.author.avatar || "/images/userImageNoste.png";
+const xmlns = "http://www.w3.org/2000/svg";
 
-    const post = document.createElement("div");
-    post.classList.add("container", "d-flex", "justify-content-center", "mt-3");
+function editPost(post) {
+    // Title
+    // Main content
+    // Media?
+
+    // Should update both the DOM as well as the post in the API database
+    // DOM: lastUpdated, title?, body?
+}
+
+function deletePost(post) {
+    // TODO: Should ask user for confirmation
+
+}
+
+function createProfileImage(image, name) {
+    const avatar = image || "/images/userImageNoste.png";
+    const profileImage = document.createElement("img");
+    profileImage.classList.add("img-fluid", "rounded-circle", "pt-n4", "m-3");
+    profileImage.style.width = "200px";
+    profileImage.style.height = "200px";
+    profileImage.src = `${avatar}`;
+    profileImage.alt = `${name}'s profile image`;
+    return profileImage;
+}
+
+// TODO: Add event listener?
+function createLikeButton(numLikes) {
+    const loveButton = document.createElement("a");
+    loveButton.href = "#";
+    loveButton.classList.add("btn", "btn-primary");
+    loveButton.style.marginRight = "10px";
+
+    const loveButtonSvg = document.createElementNS(xmlns, "svg");
+    loveButtonSvg.setAttribute("width", "16");
+    loveButtonSvg.setAttribute("height", "16");
+    loveButtonSvg.setAttribute("fill", "currentColor");
+    loveButtonSvg.setAttribute("class", "bi bi-heart");
+    loveButtonSvg.setAttribute("viewBox", "0 0 16 16");
+    const loveButtonPath = document.createElementNS(xmlns, "path");
+    loveButtonPath.setAttribute(
+        "d",
+        "m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15"
+    );
+
+    const loveButtonCount = document.createElement("span");
+    loveButtonCount.classList.add("badge", "rounded-pill", "text-dark");
+    loveButtonCount.textContent = numLikes;
+
+    loveButtonSvg.append(loveButtonPath);
+    loveButton.append(loveButtonSvg, loveButtonCount);
+    return loveButton;
+}
+
+// TODO: Add event listener?
+function createCommentButton() {
+    const commentButton = document.createElement("a");
+    commentButton.href = "#";
+    commentButton.classList.add("btn", "btn-primary");
+
+    const commentButtonSvg = document.createElementNS(xmlns, "svg");
+    commentButtonSvg.setAttribute("width", "16");
+    commentButtonSvg.setAttribute("height", "16");
+    commentButtonSvg.setAttribute("fill", "currentColor");
+    commentButtonSvg.setAttribute("class", "bi bi-chat");
+    commentButtonSvg.setAttribute("viewBox", "0 0 16 16");
+    const commentButtonPath = document.createElementNS(xmlns, "path");
+    commentButtonPath.setAttribute(
+        "d",
+        "M2.678 11.894a1 1 0 0 1 .287.801 11 11 0 0 1-.398 2c1.395-.323 2.247-.697 2.634-.893a1 1 0 0 1 .71-.074A8 8 0 0 0 8 14c3.996 0 7-2.807 7-6s-3.004-6-7-6-7 2.808-7 6c0 1.468.617 2.83 1.678 3.894m-.493 3.905a22 22 0 0 1-.713.129c-.2.032-.352-.176-.273-.362a10 10 0 0 0 .244-.637l.003-.01c.248-.72.45-1.548.524-2.319C.743 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7-3.582 7-8 7a9 9 0 0 1-2.347-.306c-.52.263-1.639.742-3.468 1.105"
+    );
+
+    commentButtonSvg.append(commentButtonPath);
+    commentButton.append(commentButtonSvg);
+    return commentButton;
+}
+
+function createEditButton(post) {
+    const editButton = document.createElement("button");
+    editButton.classList.add("btn", "btn-primary", "flex-row-reverse");
+    editButton.ariaLabel = "Edit post";
+
+    const editButtonIcon = document.createElementNS(xmlns, "svg");
+    editButtonIcon.setAttribute("width", "16");
+    editButtonIcon.setAttribute("height", "16");
+    editButtonIcon.setAttribute("fill", "currentColor");
+    editButtonIcon.setAttribute("class", "bi bi-pencil-square");
+    editButtonIcon.setAttribute("viewBox", "0 0 16 16");
+    const editButtonIconPath1 = document.createElementNS(xmlns, "path");
+    editButtonIconPath1.setAttribute(
+        "d",
+        "M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"
+    );
+    const editButtonIconPath2 = document.createElementNS(xmlns, "path");
+    editButtonIconPath2.setAttribute(
+        "d",
+        "M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"
+    );
+    editButtonIconPath2.setAttribute("fill-rule", "evenodd");
+    editButtonIcon.append(editButtonIconPath1, editButtonIconPath2);
+    editButton.append(editButtonIcon);
+
+    editButton.addEventListener("click", () => {
+        editPost(post);
+    });
+
+    return editButton;
+}
+
+function createDeleteButton(post) {
+    const deleteButton = document.createElement("button");
+    deleteButton.classList.add("btn", "btn-primary", "flex-row-reverse");
+    deleteButton.ariaLabel = "Delete post";
+
+    const deleteButtonIcon = document.createElementNS(xmlns, "svg");
+    deleteButtonIcon.setAttribute("width", "16");
+    deleteButtonIcon.setAttribute("height", "16");
+    deleteButtonIcon.setAttribute("fill", "currentColor");
+    deleteButtonIcon.setAttribute("class", "bi bi-trash");
+    deleteButtonIcon.setAttribute("viewBox", "0 0 16 16");
+    const deleteButtonIconPath1 = document.createElementNS(xmlns, "path");
+    deleteButtonIconPath1.setAttribute(
+        "d",
+        "M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"
+    );
+    const deleteButtonIconPath2 = document.createElementNS(xmlns, "path");
+    deleteButtonIconPath2.setAttribute(
+        "d",
+        "M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"
+    );
+
+    deleteButtonIcon.append(deleteButtonIconPath1, deleteButtonIconPath2);
+    deleteButton.append(deleteButtonIcon);
+
+    deleteButton.addEventListener("click", () => {
+        deletePost(post);
+    });
+
+    return deleteButton;
+}
+
+export function createPostTemplate(postData) {
+
+    const postContainer = document.createElement("div");
+    postContainer.classList.add("container", "d-flex", "justify-content-center", "mt-3");
 
     const card = document.createElement("div");
-    card.classList.add("card", "flex-fill","my-3");
+    card.classList.add("card", "flex-fill", "my-3");
     card.style.maxWidth = "700px";
 
     const row = document.createElement("div");
     row.classList.add("row");
 
-    const imageColumn = document.createElement("div");
-    imageColumn.classList.add("col-md-4");
+    const profileImageContainer = document.createElement("div");
+    profileImageContainer.classList.add("col-md-4");
 
-    const postImage = document.createElement("img");
-    postImage.classList.add("img-fluid", "rounded-circle", "pt-n4", "m-3");
-    postImage.style.width = "200px";
-    postImage.style.height = "200px";
-    postImage.src = `${avatar}`;
-    postImage.alt = `${postData.author.name} profile image`;
+    const profileImage = createProfileImage(postData.author.avatar, postData.author.name);
 
-    imageColumn.append(postImage);
+    profileImageContainer.append(profileImage);
 
     const cardColumn = document.createElement("div");
     cardColumn.classList.add("col-md-8");
@@ -35,95 +171,49 @@ export function createPostTemplate(postData){
     cardTitle.classList.add("class-title");
     cardTitle.textContent = `${postData.title}`;
 
-    const cardText = document.createElement("p");
-    cardText.classList.add("card-text");
-    cardText.textContent = `${postData.body}`;  // TODO: what if there is no body?
+    cardBody.append(cardTitle);
 
-    const cardMedia = document.createElement("div");
-    cardMedia.classList.add("media");
-	if (postData.media) {
-		const cardMediaImage = document.createElement("img");
-		cardMediaImage.classList.add("img-fluid", "rounded", "mb-3");
+    if (postData.body) {
+        const cardText = document.createElement("p");
+        cardText.classList.add("card-text");
+        cardText.textContent = `${postData.body}`;
+        cardBody.append(cardText);
+    }
+
+    if (postData.media) {
+        const cardMedia = document.createElement("div");
+        cardMedia.classList.add("media");
+        const cardMediaImage = document.createElement("img");
+        cardMediaImage.classList.add("img-fluid", "rounded", "mb-3");
         cardMediaImage.src = postData.media;
-		cardMediaImage.alt = "Post media";
+        cardMediaImage.alt = "Post media";
         cardMedia.append(cardMediaImage);
-	}
+        cardBody.append(cardMedia);
+    }
 
-    const loveButton = document.createElement("a");
-    loveButton.href = "#";
-    loveButton.classList.add("btn", "btn-primary");
-    loveButton.style.marginRight = "10px"; 
-
-    const ns = "http://www.w3.org/2000/svg";
-    const loveButtonSvg = document.createElementNS(ns, "svg");
-    loveButtonSvg.setAttribute("width", "16");
-    loveButtonSvg.setAttribute("height", "16");
-    loveButtonSvg.setAttribute("fill", "currentColor");
-    loveButtonSvg.setAttribute("class", "bi bi-heart");
-    loveButtonSvg.setAttribute("viewBox", "0 0 16 16");
-    const loveButtonPath = document.createElementNS(ns, "path");
-    loveButtonPath.setAttribute(
-        "d",
-        "m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15"
-    );
-
-    let totalLoveCount = 0;
+    let numLikes = 0;
     postData.reactions.forEach((reaction) => {
-      totalLoveCount += reaction.count;
+        numLikes += reaction.count;
     });
-    const loveButtonCount = document.createElement("span");
-    loveButtonCount.classList.add("badge", "rounded-pill", "text-dark");
-    loveButtonCount.textContent = totalLoveCount;
 
-    loveButtonSvg.append(loveButtonPath);
-    loveButton.append(loveButtonSvg, loveButtonCount);
+    const likeButton = createLikeButton(numLikes);
+    const commentButton = createCommentButton();
 
-    const commentButton = document.createElement("a");
-    commentButton.href = "#";
-    commentButton.classList.add("btn", "btn-primary");
-    commentButton.style.marginRight = "10px"; 
+    // TODO: Maybe handle this differently. I.e. place buttons in a different container.
+    likeButton.style.marginRight = "10px";
+    commentButton.style.marginRight = "10px";
 
-    const commentButtonSvg = document.createElementNS(ns, "svg");
-    commentButtonSvg.setAttribute("width", "16");
-    commentButtonSvg.setAttribute("height", "16");
-    commentButtonSvg.setAttribute("fill", "currentColor");
-    commentButtonSvg.setAttribute("class", "bi bi-chat");
-    commentButtonSvg.setAttribute("viewBox", "0 0 16 16");
-    const commentButtonPath = document.createElementNS(ns, "path");
-    commentButtonPath.setAttribute(
-        "d",
-        "M2.678 11.894a1 1 0 0 1 .287.801 11 11 0 0 1-.398 2c1.395-.323 2.247-.697 2.634-.893a1 1 0 0 1 .71-.074A8 8 0 0 0 8 14c3.996 0 7-2.807 7-6s-3.004-6-7-6-7 2.808-7 6c0 1.468.617 2.83 1.678 3.894m-.493 3.905a22 22 0 0 1-.713.129c-.2.032-.352-.176-.273-.362a10 10 0 0 0 .244-.637l.003-.01c.248-.72.45-1.548.524-2.319C.743 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7-3.582 7-8 7a9 9 0 0 1-2.347-.306c-.52.263-1.639.742-3.468 1.105"
-    );
+    cardBody.append(likeButton, commentButton);
 
-    commentButtonSvg.append(commentButtonPath);
-    commentButton.append(commentButtonSvg);
+    const currentUser = storage.load("profile").name;
+    if (postData.author.name === currentUser) {
+        const editButton = createEditButton(postData);
+        const deleteButton = createDeleteButton(postData);
 
-    // TODO: What is this button for? To view the single post? Maybe rename the variable names to something more appropriate then?
-    const arrowButton = document.createElement("a");
-    arrowButton.href = "#";
-    arrowButton.classList.add("btn", "btn-primary");
+        editButton.style.marginRight = "10px";
 
-    const arrowButtonSvg = document.createElementNS(ns, "svg");
-    arrowButtonSvg.setAttribute("width", "16");
-    arrowButtonSvg.setAttribute("height", "16");
-    arrowButtonSvg.setAttribute("fill", "currentColor");
-    arrowButtonSvg.setAttribute("class", "bi bi-box-arrow-down");
-    arrowButtonSvg.setAttribute("viewBox", "0 0 16 16");
-    const arrowButtonPath1 = document.createElementNS(ns, "path");
-    arrowButtonPath1.setAttribute("fill-rule", "evenodd");
-    arrowButtonPath1.setAttribute(
-        "d",
-        "M3.5 10a.5.5 0 0 1-.5-.5v-8a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 0 0 1h2A1.5 1.5 0 0 0 14 9.5v-8A1.5 1.5 0 0 0 12.5 0h-9A1.5 1.5 0 0 0 2 1.5v8A1.5 1.5 0 0 0 3.5 11h2a.5.5 0 0 0 0-1z"
-    );
-    const arrowButtonPath2 = document.createElementNS(ns, "path");
-    arrowButtonPath2.setAttribute("fill-rule", "evenodd");
-    arrowButtonPath2.setAttribute(
-        "d",
-        "M7.646 15.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 14.293V5.5a.5.5 0 0 0-1 0v8.793l-2.146-2.147a.5.5 0 0 0-.708.708z"
-    );
-
-    arrowButtonSvg.append(arrowButtonPath1, arrowButtonPath2);
-    arrowButton.append(arrowButtonSvg);
+        cardBody.append(editButton, deleteButton);
+    }
 
     const date = new Date(postData.updated).toDateString();
 
@@ -133,17 +223,12 @@ export function createPostTemplate(postData){
     lastUpdatedText.classList.add("text-body-secondary");
     lastUpdatedText.textContent = `Last updated ${date}`;
     lastUpdated.append(lastUpdatedText);
+    cardBody.append(lastUpdated);
 
-    cardBody.append(cardTitle, cardText)
-    if (postData.media) {
-        cardBody.append(cardMedia);
-    }
-    cardBody.append(loveButton, commentButton, arrowButton, lastUpdated);
     cardColumn.append(cardBody);
-
-    row.append(imageColumn, cardColumn);
+    row.append(profileImageContainer, cardColumn);
     card.append(row);
-    post.append(card);
+    postContainer.append(card);
 
-    return post;
+    return postContainer;
 }

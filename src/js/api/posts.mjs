@@ -3,6 +3,8 @@ import { request } from "./request.mjs";
 const action = "?_author=true&_reactions=true&_comments=true";
 
 export async function getAllPosts(accessToken, limit = 100, page = 1) {
+    if (!accessToken) { throw new Error("Missing access token"); }
+
     try {
         const endpoint = `/social/posts${action}&limit=${limit}&page=${page}`
         const data = {};
@@ -30,12 +32,11 @@ export async function createPost(post, accessToken) {
     if (!accessToken) { throw new Error("Missing access token"); }
 
     try {
-        const endpoint = `/social/posts${action}&limit=${limit}&page=${page}`
         const data = { title: post.title };
         if (post.body) { data.body = post.body; }
         if (post.tags) { data.tags = post.tags; }
         if (post.media) { data.media = post.media; }
-        const response = await request(endpoint, "POST", data, accessToken);
+        const response = await request("/social/posts", "POST", data, accessToken);
         const json = await response.json();
         return { success: response.ok, data: json };
     } catch(error) {

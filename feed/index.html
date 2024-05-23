@@ -63,28 +63,28 @@
       <div class="container" style="max-width: 700px">
         <div class="create-post">
           <h1 class="title d-flex justify-content-center mt-3">Create post</h1>
-          <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label"
-              >Username</label
-            >
+          <form id="createPostForm" class="d-flex col">
+            <!-- TODO: Fix styling after ca -->
             <input
-              type="email"
               class="form-control"
-              id="exampleFormControlInput1"
-              placeholder="Minimum 3 characters" />
-          </div>
-          <div class="mb-3">
-            <label for="exampleFormControlTextarea1" class="form-label"
-              >What´s on your mind?</label
-            >
-            <textarea
+              type="text"
+              name="title"
+              placeholder="Title" />
+            <input
               class="form-control"
-              id="exampleFormControlTextarea1"
-              rows="3"></textarea>
-          </div>
-          <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            <button class="btn btn-primary me-md-2" type="button">Post</button>
-          </div>
+              type="text"
+              name="body"
+              rows="3"
+              placeholder="What's on your mind?" />
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+              <button
+                type="submit"
+                class="btn btn-primary me-md-2"
+                type="button">
+                Post
+              </button>
+            </div>
+          </form>
         </div>
       </div>
 
@@ -116,5 +116,8 @@
         <!-- JS generated content -->
       </div>
     </main>
+    <footer>
+      <p>Default profile image from Freepik</p>
+    </footer>
   </body>
 </html>
