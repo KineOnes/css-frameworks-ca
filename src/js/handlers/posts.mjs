@@ -1,4 +1,4 @@
-import { getAllPosts } from "../api/posts.mjs";
+import { getAllPosts, createPost } from "../api/posts.mjs";
 import { createPostTemplate } from "../templates/posts.mjs"
 import * as storage from "../storage/index.mjs";
 
@@ -20,6 +20,38 @@ export async function handleAllPosts() {
     } else {
         // TODO: error handling
     }
+}
+
+export async function handleCreatePost(postData) {
+    try {
+        const accessToken = storage.load("accessToken");
+        const response = await createPost(postData, accessToken);
+
+        console.log(response);  // TODO: REMOVE ME
+
+        if (response.success) {
+            // give user feedback that post was created successfully
+        } else {
+            // give user feedback that we failed to create the post
+        }
+    } catch(error) {
+        console.log(error);
+    }
+}
+
+export function setCreatePosFormtListener() {
+    const form = document.querySelector("#createForm");
+
+    if (!form) { throw new Error("setCreateFormListener() called, but #createForm form element could not be found") }
+
+    form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const form = event.target;
+        const formData = new FormData(form);
+        const createPostData = Object.fromEntries(formData.entries());
+        
+        handleCreatePost(createPostData);
+    });
 }
 
 function handleSearchEvent(searchQuery) {
