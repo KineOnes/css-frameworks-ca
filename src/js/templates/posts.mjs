@@ -29,36 +29,34 @@ function createProfileImage(image, name) {
 
 // TODO: Add event listener?
 function createLikeButton(numLikes) {
-    const loveButton = document.createElement("a");
-    loveButton.href = "#";
-    loveButton.classList.add("btn", "btn-primary");
-    loveButton.style.marginRight = "10px";
+    const likeButton = document.createElement("a");
+    likeButton.classList.add("btn", "btn-primary");
+    likeButton.style.marginRight = "10px";
 
-    const loveButtonSvg = document.createElementNS(xmlns, "svg");
-    loveButtonSvg.setAttribute("width", "16");
-    loveButtonSvg.setAttribute("height", "16");
-    loveButtonSvg.setAttribute("fill", "currentColor");
-    loveButtonSvg.setAttribute("class", "bi bi-heart");
-    loveButtonSvg.setAttribute("viewBox", "0 0 16 16");
-    const loveButtonPath = document.createElementNS(xmlns, "path");
-    loveButtonPath.setAttribute(
+    const likeButtonSvg = document.createElementNS(xmlns, "svg");
+    likeButtonSvg.setAttribute("width", "16");
+    likeButtonSvg.setAttribute("height", "16");
+    likeButtonSvg.setAttribute("fill", "currentColor");
+    likeButtonSvg.setAttribute("class", "bi bi-heart");
+    likeButtonSvg.setAttribute("viewBox", "0 0 16 16");
+    const likeButtonPath = document.createElementNS(xmlns, "path");
+    likeButtonPath.setAttribute(
         "d",
         "m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15"
     );
 
-    const loveButtonCount = document.createElement("span");
-    loveButtonCount.classList.add("badge", "rounded-pill", "text-dark");
-    loveButtonCount.textContent = numLikes;
+    const likeButtonCount = document.createElement("span");
+    likeButtonCount.classList.add("badge", "rounded-pill", "text-dark");
+    likeButtonCount.textContent = numLikes;
 
-    loveButtonSvg.append(loveButtonPath);
-    loveButton.append(loveButtonSvg, loveButtonCount);
-    return loveButton;
+    likeButtonSvg.append(likeButtonPath);
+    likeButton.append(likeButtonSvg, likeButtonCount);
+    return likeButton;
 }
 
 // TODO: Add event listener?
 function createCommentButton() {
     const commentButton = document.createElement("a");
-    commentButton.href = "#";
     commentButton.classList.add("btn", "btn-primary");
 
     const commentButtonSvg = document.createElementNS(xmlns, "svg");
