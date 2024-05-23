@@ -59,3 +59,40 @@ export async function setSearchFormListener() {
         handleSearchEvent(searchData.searchQuery.toLowerCase());
     });
 }
+
+function handleSelectEvent(option) {
+    const feedContainer = document.querySelector("#feed");
+    const posts = feedContainer.children  // HTMLCollection
+
+    for (let post of posts) {
+        const media = post.querySelector(".media");;
+
+        if(option == "media") {
+            if(media) {
+                post.classList.remove("d-none");
+            } else {
+                post.classList.add("d-none");
+            }
+        } else if (option == "no-media") {
+            if(!media) {
+                post.classList.remove("d-none");
+            } else {
+                post.classList.add("d-none");
+            }
+        } else {
+            // Show all posts
+            post.classList.remove("d-none");
+        }
+    }
+}
+
+
+export async function setSelectFormListener() {
+    const select = document.querySelector("#selectForm");
+
+    if (!select) { throw new Error("setSelectFormListener() called, but #selectForm form element could not be found") }
+
+    select.addEventListener("change", (event) => {
+        handleSelectEvent(select.value);
+    });
+}

@@ -39,8 +39,18 @@ export function createPostTemplate(postData){
     cardText.classList.add("card-text");
     cardText.textContent = `${postData.body}`;  // TODO: what if there is no body?
 
+    const cardMedia = document.createElement("div");
+    cardMedia.classList.add("media");
+	if (postData.media) {
+		const cardMediaImage = document.createElement("img");
+		cardMediaImage.classList.add("img-fluid", "rounded", "mb-3");
+        cardMediaImage.src = postData.media;
+		cardMediaImage.alt = "Post media";
+        cardMedia.append(cardMediaImage);
+	}
+
     const loveButton = document.createElement("a");
-    loveButton.href = "#";  // TODO: What does this do? Why set to "#"? ANSWER: Not supposed to do anything
+    loveButton.href = "#";
     loveButton.classList.add("btn", "btn-primary");
     loveButton.style.marginRight = "10px"; 
 
@@ -69,7 +79,7 @@ export function createPostTemplate(postData){
     loveButton.append(loveButtonSvg, loveButtonCount);
 
     const commentButton = document.createElement("a");
-    commentButton.href = "#";  // TODO: What does this do? Why set to "#"?
+    commentButton.href = "#";
     commentButton.classList.add("btn", "btn-primary");
     commentButton.style.marginRight = "10px"; 
 
@@ -90,7 +100,7 @@ export function createPostTemplate(postData){
 
     // TODO: What is this button for? To view the single post? Maybe rename the variable names to something more appropriate then?
     const arrowButton = document.createElement("a");
-    arrowButton.href = "#";  // TODO: What does this do? Why set to "#"?
+    arrowButton.href = "#";
     arrowButton.classList.add("btn", "btn-primary");
 
     const arrowButtonSvg = document.createElementNS(ns, "svg");
@@ -124,7 +134,11 @@ export function createPostTemplate(postData){
     lastUpdatedText.textContent = `Last updated ${date}`;
     lastUpdated.append(lastUpdatedText);
 
-    cardBody.append(cardTitle, cardText, loveButton, commentButton, arrowButton, lastUpdated);
+    cardBody.append(cardTitle, cardText)
+    if (postData.media) {
+        cardBody.append(cardMedia);
+    }
+    cardBody.append(loveButton, commentButton, arrowButton, lastUpdated);
     cardColumn.append(cardBody);
 
     row.append(imageColumn, cardColumn);
