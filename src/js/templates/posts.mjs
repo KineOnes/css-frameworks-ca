@@ -12,7 +12,7 @@ async function handleEditPost(post) {
 }
 
 function createProfileImage(image, name) {
-    const avatar = image || "/images/userImageNoste.png";
+    const avatar = image || "/images/userImageDefault.jpg";
     const profileImage = document.createElement("img");
     profileImage.classList.add("img-fluid", "rounded-circle", "pt-n4", "m-3");
     profileImage.style.width = "200px";

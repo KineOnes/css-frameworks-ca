@@ -13,25 +13,24 @@ import * as storage from "./storage/index.mjs";
 
 
 function main() {
-	const path = location.pathname;
+    const path = location.pathname;
 
-	switch (path) {
-		case "/":
-			setLoginFormListener();
-			break;
-        
+    switch (path) {
+        case "/":
+            setLoginFormListener();
+            break;
+
         case "/profile/registration/":
             setRegistrationFormListener();
             break;
-        
+
         case "/profile/":
             const profile = storage.load("profile");
             const profileContainer = document.querySelector("#profile");
             const profileCard = createProfileTemplate(profile);
             profileContainer.append(profileCard);
-            console.log(profileCard);
             break;
-        
+
         case "/feed/":
             // TODO: set listeners for "load more posts", "create post", "filter posts", "search posts"
             handleAllPosts();
@@ -40,9 +39,9 @@ function main() {
             setCreatePostFormListener();
             break;
 
-		default:
-			break;
-	}
+        default:
+            break;
+    }
 }
 
 main();

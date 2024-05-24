@@ -31,7 +31,7 @@ function createUserInfoTemplate() {
     const followingTitle = document.createElement("div");
     followingTitle.classList.add("col");
     followingTitle.textContent = "Following";
-    
+
     const memberSinceDate = document.createElement("div");
     memberSinceDate.classList.add("col");
     memberSinceDate.textContent = "August 2021";  // NOTE: Not provided by API
@@ -52,7 +52,7 @@ function createUserInfoTemplate() {
 function createUserDescription(name) {
     const userDescriptionContainer = document.createElement("div");
     userDescriptionContainer.classList.add("card-body");
-    
+
     const userName = document.createElement("h5");
     userName.classList.add("card-title");
     userName.textContent = `${name}`;
@@ -128,7 +128,7 @@ function createButtonsTemplate() {
 }
 
 export function createProfileTemplate(profileData) {
-    const avatar = profileData.avatar || "/images/userImageNoste.png";
+    const avatar = profileData.avatar || "/images/userImageDefault.jpg";
 
     const cardContainer = document.createElement("div");
     cardContainer.classList.add("card", "mb-3");
