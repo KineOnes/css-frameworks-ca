@@ -1,4 +1,4 @@
-import { getAllPosts, createPost, deletePost } from "../api/posts.mjs";
+import { getAllPosts, getPostById, createPost, deletePost } from "../api/posts.mjs";
 import { createPostTemplate } from "../templates/posts.mjs"
 import * as storage from "../storage/index.mjs";
 
@@ -17,6 +17,23 @@ export async function handleAllPosts() {
             const postTemplate = createPostTemplate(post);
             feedContainer.append(postTemplate);
         });
+    } else {
+        // TODO: error handling
+    }
+}
+
+export async function handleSinglePost(id) {
+    const accessToken = storage.load("accessToken");
+
+    if (!accessToken) { return; }
+
+    const response = await getPostById(id, accessToken);
+
+    if (response.success) {
+        const post = response.data;
+        const container = document.querySelector("main");
+        const postTemplate = createPostTemplate(post);
+        container.append(postTemplate);
     } else {
         // TODO: error handling
     }

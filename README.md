@@ -1,10 +1,6 @@
-# css-frameworks-ca
+# js2-ca
 
-A responsive social media application built with Bootstrap and SASS.
-
-- Login/register page on index.html
-- Feed.html with a form to create posts and other users posts.
-- Profile.html with a profile description and several posts from the user.
+A responsive social media application built with Bootstrap, SASS and JavaScript
 
 A searchbar in nav-bar on all pages.
 
@@ -14,6 +10,7 @@ A searchbar in nav-bar on all pages.
 - HTML
 - Bootstrap
 - SASS
+- JavaScript
 
 ## Getting Started
 
@@ -24,10 +21,8 @@ Clone the repo:
 ```
 git@github.com:KineOnes/css-frameworks-ca.git
 
-The branch: 2css-frameworks
+The branch: js2
 
 ```
 
-This was my first dive into the pool of framework and it was a bit overwhelming. I see all the benefits and impressive opportunities framework gives, but it is alot to wrap my head around.
-
-Excited to learn more!
+Trello board for project planning: https://trello.com/b/Ui6nlMjg/javascript2

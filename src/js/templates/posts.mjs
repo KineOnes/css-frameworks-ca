@@ -151,8 +151,10 @@ export function createPostTemplate(postData) {
     const row = document.createElement("div");
     row.classList.add("row");
 
-    const profileImageContainer = document.createElement("div");
+    // TODO: Maybe we should make the card clickable instead? but not sure how it would affect the buttons!
+    const profileImageContainer = document.createElement("a");
     profileImageContainer.classList.add("col-md-4");
+    profileImageContainer.href = `/feed/post/?id=${postData.id}`;
 
     const profileImage = createProfileImage(
         postData.author.avatar,

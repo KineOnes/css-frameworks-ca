@@ -2,6 +2,7 @@ import { setLoginFormListener } from "./handlers/login.mjs";
 import { setRegistrationFormListener } from "./handlers/registration.mjs";
 import {
     handleAllPosts,
+    handleSinglePost,
     setCreatePostFormListener,
     setSearchFormListener,
     setSelectFormListener
@@ -37,6 +38,12 @@ function main() {
             setSearchFormListener();
             setSelectFormListener();
             setCreatePostFormListener();
+            break;
+
+        case "/feed/post/":
+            const urlParams = new URLSearchParams(window.location.search);
+            let id = urlParams.get("id");
+            handleSinglePost(id);
             break;
 
         default:

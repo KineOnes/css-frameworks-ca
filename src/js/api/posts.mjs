@@ -2,6 +2,21 @@ import { request } from "./request.mjs";
 
 const action = "?_author=true&_reactions=true&_comments=true";
 
+export async function getPostById(id, accessToken) {
+    if (!id) { throw new Error("Missing id argument"); }
+    if (!accessToken) { throw new Error("Missing access token"); }
+
+    try {
+        const endpoint = `/social/posts/${id}${action}`;
+        const data = {};
+        const response = await request(endpoint, "GET", data, accessToken);
+        const json = await response.json();
+        return { success: response.ok, data: json };
+    } catch (error) {
+        throw new Error(error);
+    }
+}
+
 export async function getAllPosts(accessToken, limit = 100, page = 1) {
     if (!accessToken) { throw new Error("Missing access token"); }
 
