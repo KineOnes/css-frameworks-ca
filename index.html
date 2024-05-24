@@ -72,12 +72,20 @@
 
               <div class="form-group mb-3">
                 <label for="email">Email</label>
-                <input class="form-control" type="email" required pattern="^[\w\-.]+@(stud\.)?noroff\.no$" required name="email">
+                <input class="form-control" 
+                  type="email" 
+                  required pattern="^[\w\-.]+@(stud\.)?noroff\.no$" 
+                  required name="email"
+                  placeholder="noroff valid email only">
               </div>
 
               <div class="form-group mb-3">
                 <label for="password">Password</label>
-                <input class="form-control" required  type="password" name="password" minlength="8">
+                <input class="form-control" 
+                  required  type="password" 
+                  name="password" 
+                  minlength="8"
+                  placeholder="minimum length of 8 characters">
               </div>
 
               <button type="submit" class="btn btn-primary mb-3">Login</button>
