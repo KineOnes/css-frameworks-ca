@@ -4,14 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>HOME</title>
-    <link rel="icon" href="images/beige-knit.png" type="image"> <!--To remove error favicon in console-->
+    <link rel="icon" href="images/beige-knit.png" type="image" />
+    <!--To remove error favicon in console-->
     <link rel="stylesheet" href="dist/css/index.css" />
     <script src="src/js/index.mjs" type="module"></script>
-    
+
     <script
       src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
       defer></script>
-      
   </head>
   <body
     data-bs-theme="dark"
@@ -58,34 +58,36 @@
           <h1>Login</h1>
         </div>
         <div class="col-12 col md-6">
-
-
           <form id="loginForm">
-
-              <div class="form-group mb-3">
-                <label for="email">Email</label>
-                <input class="form-control" 
-                  type="email" 
-                  required pattern="^[\w\-.]+@(stud\.)?noroff\.no$" 
-                  required name="email"
-                  placeholder="noroff valid email only">
-              </div>
-
-              <div class="form-group mb-3">
-                <label for="password">Password</label>
-                <input class="form-control" 
-                  required  type="password" 
-                  name="password" 
-                  minlength="8"
-                  placeholder="minimum length of 8 characters">
-              </div>
-
-              <button type="submit" class="btn btn-primary mb-3">Login</button>
+            <div class="form-group mb-3">
+              <label for="email">Email</label>
+              <input
+                class="form-control"
+                type="email"
+                required
+                pattern="^[\w\-.]+@(stud\.)?noroff\.no$"
+                required
+                name="email"
+                placeholder="noroff valid email only" />
+            </div>
+            <div class="form-group mb-3">
+              <label for="password">Password</label>
+              <input
+                class="form-control"
+                required
+                type="password"
+                name="password"
+                minlength="8"
+                placeholder="minimum length of 8 characters" />
+            </div>
+            <button type="submit" class="btn btn-primary mb-3">Login</button>
           </form>
-          
+
           <form id="signupForm" action="/profile/registration">
-              <button class="btn btn-primary mb-3">Sign up!</button>
+            <button class="btn btn-primary mb-3">Sign up!</button>
           </form>
+        </div>
+      </div>
     </main>
   </body>
 </html>

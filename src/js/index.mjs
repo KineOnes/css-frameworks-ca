@@ -17,7 +17,10 @@ function main() {
     const path = location.pathname;
 
     switch (path) {
+        // Intentional fall-through
+        // TODO: Should probably have a separate page for login. I.e. /profile/login/index.html
         case "/":
+        case "/index.html": // Temporary workaround: Handle LiveServer opening at path /index.html
             setLoginFormListener();
             break;
 
@@ -47,6 +50,7 @@ function main() {
             break;
 
         default:
+            console.log(`Unknown path name: ${path}`);
             break;
     }
 }

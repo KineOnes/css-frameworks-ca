@@ -4,7 +4,7 @@ import * as storage from "../storage/index.mjs";
 async function handleLoginEvent(email, password) {
     try {
         const response = await login(email, password);
-        
+
         if (response.success) {
             const { accessToken, ...user } = response.data;
             storage.save("accessToken", accessToken);
