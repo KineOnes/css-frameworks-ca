@@ -2,6 +2,18 @@ import { request } from "./request.mjs";
 
 const action = "?_author=true&_reactions=true&_comments=true";
 
+/**
+ * This function to fetch a single post by id when a post is clicked}
+ * @param {number} id - the id number for the post clicked
+ * @param {string} accessToken - the access token required for authentication
+ * @returns 
+ * @example 
+ * ´´´js
+ * //Use this function to fetch a single post by id when a post is clicked 
+ * //on on the feed page
+ * const response = await request(endpoint, "GET", data, accessToken);
+ * //Redirect the user to a new page with the single post fetched by id
+ */
 export async function getPostById(id, accessToken) {
     if (!id) { throw new Error("Missing id argument"); }
     if (!accessToken) { throw new Error("Missing access token"); }
