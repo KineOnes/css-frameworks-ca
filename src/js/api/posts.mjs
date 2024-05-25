@@ -17,6 +17,19 @@ export async function getPostById(id, accessToken) {
     }
 }
 
+/**
+ * This will fetch all posts from API with a 100 posts limit
+ * @param {string} accessToken - the access token required for authentication
+ * @param {number} limit - maximum number of posts to fetch per page
+ * @param {number} page - the page number to fetch
+ * @returns {Promise<Object>} 
+ * @example
+ * ´´´js
+ * //Use this function to fetch 100 posts from  the API
+ * const response = await request(endpoint, "GET", data, accessToken);
+ * // Display 100 posts on the feed page
+ * ´´´
+ */
 export async function getAllPosts(accessToken, limit = 100, page = 1) {
     if (!accessToken) { throw new Error("Missing access token"); }
 
@@ -58,6 +71,7 @@ export async function createPost(post, accessToken) {
         throw new Error(error);
     }
 }
+
 
 export async function updatePost(id, post, accessToken) {
     if (!post || !post.title) { throw new Error("Missing post.title argument"); }
