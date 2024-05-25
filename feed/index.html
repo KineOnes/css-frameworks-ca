@@ -55,24 +55,24 @@
       <div class="container" style="max-width: 700px">
         <div class="create-post">
           <h1 class="title d-flex justify-content-center mt-3">Create post</h1>
-          <form id="createPostForm" class="d-flex col">
-            <!-- TODO: Fix styling after ca -->
-            <input
-              class="form-control"
-              type="text"
-              name="title"
-              placeholder="Title" />
-            <input
-              class="form-control"
-              type="text"
-              name="body"
-              rows="3"
-              placeholder="What's on your mind?" />
+          <form id="createPostForm">
+            <div class="mb-3">
+              <input
+                type="text"
+                class="form-control"
+                name="title"
+                placeholder="Title"
+                required />
+            </div>
+            <div class="mb-3">
+              <textarea
+                class="form-control"
+                name="body"
+                rows="3"
+                placeholder="What's on you mind?"></textarea>
+            </div>
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-              <button
-                type="submit"
-                class="btn btn-primary me-md-2"
-                type="button">
+              <button class="btn btn-primary me-md-2" type="submit">
                 Post
               </button>
             </div>

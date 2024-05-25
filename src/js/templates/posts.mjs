@@ -17,8 +17,7 @@ function createProfileImage(image, name) {
 // TODO: Add event listener?
 function createLikeButton(numLikes) {
     const likeButton = document.createElement("a");
-    likeButton.classList.add("btn", "btn-primary");
-    likeButton.style.marginRight = "10px";
+    likeButton.classList.add("btn", "btn-primary", "me-2");
 
     const likeButtonSvg = document.createElementNS(xmlns, "svg");
     likeButtonSvg.setAttribute("width", "16");
@@ -44,7 +43,7 @@ function createLikeButton(numLikes) {
 // TODO: Add event listener?
 function createCommentButton() {
     const commentButton = document.createElement("a");
-    commentButton.classList.add("btn", "btn-primary");
+    commentButton.classList.add("btn", "btn-primary", "me-2");
 
     const commentButtonSvg = document.createElementNS(xmlns, "svg");
     commentButtonSvg.setAttribute("width", "16");
@@ -65,7 +64,7 @@ function createCommentButton() {
 
 function createEditButton(post) {
     const editButton = document.createElement("button");
-    editButton.classList.add("btn", "btn-primary", "flex-row-reverse");
+    editButton.classList.add("btn", "btn-primary", "me-2");
     editButton.ariaLabel = "Edit post";
 
     const editButtonIcon = document.createElementNS(xmlns, "svg");
@@ -97,7 +96,7 @@ function createEditButton(post) {
 
 function createDeleteButton(post) {
     const deleteButton = document.createElement("button");
-    deleteButton.classList.add("btn", "btn-primary", "flex-row-reverse");
+    deleteButton.classList.add("btn", "btn-primary", "me-2");
     deleteButton.ariaLabel = "Delete post";
 
     const deleteButtonIcon = document.createElementNS(xmlns, "svg");
@@ -193,19 +192,12 @@ export function createPostTemplate(postData) {
     const likeButton = createLikeButton(numLikes);
     const commentButton = createCommentButton();
 
-    // TODO: Maybe handle this differently. I.e. place buttons in a different container.
-    likeButton.style.marginRight = "10px";
-    commentButton.style.marginRight = "10px";
-
     cardBody.append(likeButton, commentButton);
 
     const currentUser = storage.load("profile").name;
     if (postData.author.name === currentUser) {
         const editButton = createEditButton(postData);
         const deleteButton = createDeleteButton(postData);
-
-        editButton.style.marginRight = "10px";
-
         cardBody.append(editButton, deleteButton);
     }
 
