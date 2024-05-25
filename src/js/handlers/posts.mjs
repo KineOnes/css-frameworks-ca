@@ -104,8 +104,6 @@ async function handleCreatePost(postData, feed) {
 export function setCreatePostFormListener() {
     const form = document.querySelector("#createPostForm");
 
-    console.log(form);
-
     if (!form) { throw new Error("setCreatePostFormListener() called, but #createPostForm id could not be found") }
 
     form.addEventListener("submit", (event) => {

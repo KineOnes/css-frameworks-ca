@@ -8,11 +8,7 @@ import {
     setSearchFormListener,
     setSelectFormListener
 } from "./handlers/posts.mjs";
-
-import { createProfileTemplate } from "./templates/profile.mjs";
-
-import * as storage from "./storage/index.mjs";
-
+import { handleLoadProfile } from "./handlers/profile.mjs";
 
 function main() {
     const path = location.pathname;
@@ -29,12 +25,12 @@ function main() {
             setRegistrationFormListener();
             break;
 
-        case "/profile/":
-            const profile = storage.load("profile");
-            const profileContainer = document.querySelector("#profile");
-            const profileCard = createProfileTemplate(profile);
-            profileContainer.append(profileCard);
+        case "/profile/": {
+            const urlParams = new URLSearchParams(window.location.search);
+            const name = urlParams.get("name");
+            handleLoadProfile(name);
             break;
+        }
 
         case "/feed/":
             // TODO: set listeners for "load more posts"?

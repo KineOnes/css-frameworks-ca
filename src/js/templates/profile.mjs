@@ -6,6 +6,7 @@ function createProfileImageTemplate(image) {
     const profileImage = document.createElement("img");
     profileImage.classList.add("card-img-to", "mt-3", "mb-3", "rounded-circle", "pt-n4");
     profileImage.style.width = "200px";
+    profileImage.style.height = "200px";
     profileImage.src = `${image}`;
     profileImage.alt = "Profile image";
 
@@ -14,7 +15,7 @@ function createProfileImageTemplate(image) {
     return imageContainer;
 }
 
-function createUserInfoTemplate() {
+function createUserInfoTemplate(followers, following) {
     const userInfoContainer = document.createElement("div");
     userInfoContainer.classList.add("container", "text-center");
     const userInfoTitleRow = document.createElement("div");
@@ -37,10 +38,10 @@ function createUserInfoTemplate() {
     memberSinceDate.textContent = "August 2021";  // NOTE: Not provided by API
     const followersCount = document.createElement("div");
     followersCount.classList.add("col");
-    followersCount.textContent = "546";  // TODO: get from API
+    followersCount.textContent = `${followers.length}`;
     const followingCount = document.createElement("div");
     followingCount.classList.add("col");
-    followingCount.textContent = "410";  // TODO: get from API
+    followingCount.textContent = `${following.length}`;
 
     userInfoTitleRow.append(memberSinceTitle, followersTitle, followingTitle);
     userInfoDataRow.append(memberSinceDate, followersCount, followingCount);
@@ -135,7 +136,7 @@ export function createProfileTemplate(profileData) {
     cardContainer.style.maxWidth = "700px";
 
     const imageContainer = createProfileImageTemplate(avatar);
-    const userInfoContainer = createUserInfoTemplate();
+    const userInfoContainer = createUserInfoTemplate(profileData.followers, profileData.following);
     const userDescriptionContainer = createUserDescription(profileData.name);
     const buttonsContainer = createButtonsTemplate();
 

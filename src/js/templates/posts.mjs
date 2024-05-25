@@ -5,18 +5,24 @@ const xmlns = "http://www.w3.org/2000/svg";
 
 function createProfileImage(image, name) {
     const avatar = image || "/images/userImageDefault.jpg";
+
+    const profileImageAnchor = document.createElement("a");
+    profileImageAnchor.href = `/profile/?name=${name}`;
+
     const profileImage = document.createElement("img");
     profileImage.classList.add("img-fluid", "rounded-circle", "pt-n4", "m-3");
     profileImage.style.width = "200px";
     profileImage.style.height = "200px";
     profileImage.src = `${avatar}`;
     profileImage.alt = `${name}'s profile image`;
-    return profileImage;
+
+    profileImageAnchor.append(profileImage);
+    return profileImageAnchor;
 }
 
 // TODO: Add event listener?
 function createLikeButton(numLikes) {
-    const likeButton = document.createElement("a");
+    const likeButton = document.createElement("button");
     likeButton.classList.add("btn", "btn-primary", "me-2");
 
     const likeButtonSvg = document.createElementNS(xmlns, "svg");
@@ -42,7 +48,7 @@ function createLikeButton(numLikes) {
 
 // TODO: Add event listener?
 function createCommentButton() {
-    const commentButton = document.createElement("a");
+    const commentButton = document.createElement("button");
     commentButton.classList.add("btn", "btn-primary", "me-2");
 
     const commentButtonSvg = document.createElementNS(xmlns, "svg");
@@ -62,9 +68,43 @@ function createCommentButton() {
     return commentButton;
 }
 
+function createViewButton(id) {
+    const viewButton = document.createElement("button");
+    viewButton.classList.add("btn", "btn-primary", "me-2");
+
+    const viewButtonSvg = document.createElementNS(xmlns, "svg");
+    viewButtonSvg.setAttribute("width", "16");
+    viewButtonSvg.setAttribute("height", "16");
+    viewButtonSvg.setAttribute("fill", "currentColor");
+    viewButtonSvg.setAttribute("class", "bi bi-chat");
+    viewButtonSvg.setAttribute("viewBox", "0 0 16 16");
+    const viewButtonPath1 = document.createElementNS(xmlns, "path");
+    viewButtonPath1.setAttribute("fill-rule", "evenodd")
+    viewButtonPath1.setAttribute(
+        "d",
+        "M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8M1.173 8a13 13 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5s3.879 1.168 5.168 2.457A13 13 0 0 1 14.828 8q-.086.13-.195.288c-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5s-3.879-1.168-5.168-2.457A13 13 0 0 1 1.172 8z"
+    );
+    const viewButtonPath2 = document.createElementNS(xmlns, "path");
+    viewButtonPath2.setAttribute("fill-rule", "evenodd")
+    viewButtonPath2.setAttribute(
+        "d",
+        "M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5M4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0"
+    );
+
+    viewButtonSvg.append(viewButtonPath1, viewButtonPath2);
+    viewButton.append(viewButtonSvg);
+
+    viewButton.addEventListener("click", () => {
+        window.location.href = `/feed/post/?id=${id}`;
+    });
+
+    return viewButton;
+}
+
+
 function createEditButton(post) {
     const editButton = document.createElement("button");
-    editButton.classList.add("btn", "btn-primary", "me-2");
+    editButton.classList.add("btn", "btn-secondary", "me-2");
     editButton.ariaLabel = "Edit post";
 
     const editButtonIcon = document.createElementNS(xmlns, "svg");
@@ -96,7 +136,7 @@ function createEditButton(post) {
 
 function createDeleteButton(post) {
     const deleteButton = document.createElement("button");
-    deleteButton.classList.add("btn", "btn-primary", "me-2");
+    deleteButton.classList.add("btn", "btn-danger", "me-2");
     deleteButton.ariaLabel = "Delete post";
 
     const deleteButtonIcon = document.createElementNS(xmlns, "svg");
@@ -142,10 +182,9 @@ export function createPostTemplate(postData) {
     const row = document.createElement("div");
     row.classList.add("row");
 
-    // TODO: Maybe we should make the card clickable instead? but not sure how it would affect the buttons!
+    // TODO: Navigate to profile page instead
     const profileImageContainer = document.createElement("a");
     profileImageContainer.classList.add("col-md-4");
-    profileImageContainer.href = `/feed/post/?id=${postData.id}`;
 
     const profileImage = createProfileImage(
         postData.author.avatar,
@@ -191,8 +230,9 @@ export function createPostTemplate(postData) {
 
     const likeButton = createLikeButton(numLikes);
     const commentButton = createCommentButton();
+    const viewButton = createViewButton(postData.id);
 
-    cardBody.append(likeButton, commentButton);
+    cardBody.append(likeButton, commentButton, viewButton);
 
     const currentUser = storage.load("profile").name;
     if (postData.author.name === currentUser) {
