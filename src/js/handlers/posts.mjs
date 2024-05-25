@@ -1,5 +1,6 @@
-import { getAllPosts, getPostById, createPost, deletePost } from "../api/posts.mjs";
+import { getAllPosts, getPostById, createPost, deletePost, updatePost } from "../api/posts.mjs";
 import { createPostTemplate } from "../templates/posts.mjs"
+import { createEditPostTemplate } from "../templates/editPost.mjs";
 import * as storage from "../storage/index.mjs";
 
 export async function handleAllPosts() {
@@ -47,6 +48,32 @@ export async function handleDeletePost(post) {
     } else {
         // TODO: Notify user?
         console.log(response);
+    }
+}
+
+export async function handleEditPost(id) {
+    const accessToken = storage.load("accessToken");
+
+    if (!accessToken) { return; }
+
+    const response = await getPostById(id, accessToken);
+
+    if (response.success) {
+        const container = document.querySelector("main");
+        const editPostTemplate = createEditPostTemplate(response.data);
+        container.append(editPostTemplate);
+    } else {
+        // TODO: error handling
+    }
+}
+
+export async function handleUpdatePost(id, post) {
+    const accessToken = storage.load("accessToken");
+    const response = await updatePost(id, post, accessToken);
+    if (response.success) {
+        window.location.href = "/feed";
+    } else {
+        // TODO: notify user of failed attempt
     }
 }
 

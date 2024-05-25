@@ -3,6 +3,7 @@ import { setRegistrationFormListener } from "./handlers/registration.mjs";
 import {
     handleAllPosts,
     handleSinglePost,
+    handleEditPost,
     setCreatePostFormListener,
     setSearchFormListener,
     setSelectFormListener
@@ -36,18 +37,26 @@ function main() {
             break;
 
         case "/feed/":
-            // TODO: set listeners for "load more posts", "create post", "filter posts", "search posts"
+            // TODO: set listeners for "load more posts"?
             handleAllPosts();
             setSearchFormListener();
             setSelectFormListener();
             setCreatePostFormListener();
             break;
 
-        case "/feed/post/":
+        case "/feed/post/": {
             const urlParams = new URLSearchParams(window.location.search);
             let id = urlParams.get("id");
             handleSinglePost(id);
             break;
+        }
+
+        case "/feed/post/edit/": {
+            const urlParams = new URLSearchParams(window.location.search);
+            let id = urlParams.get("id");
+            handleEditPost(id);
+            break;
+        }
 
         default:
             console.log(`Unknown path name: ${path}`);

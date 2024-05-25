@@ -59,6 +59,24 @@ export async function createPost(post, accessToken) {
     }
 }
 
+export async function updatePost(id, post, accessToken) {
+    if (!post || !post.title) { throw new Error("Missing post.title argument"); }
+    if (!accessToken) { throw new Error("Missing access token"); }
+
+    try {
+        const data = { title: post.title };
+        if (post.body) { data.body = post.body; }
+        if (post.tags) { data.tags = post.tags; }
+        if (post.media) { data.media = post.media; }
+        const response = await request(`/social/posts/${id}`, "PUT", data, accessToken);
+        const json = await response.json();
+        return { success: response.ok, data: json };
+    } catch (error) {
+        throw new Error(error);
+    }
+}
+
+
 export async function deletePost(id, accessToken) {
     if (!id) { throw new Error("Missing id argument"); }
     if (!accessToken) { throw new Error("Missing access token"); }

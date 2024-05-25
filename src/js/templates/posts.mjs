@@ -3,14 +3,6 @@ import { handleDeletePost } from "../handlers/posts.mjs";
 
 const xmlns = "http://www.w3.org/2000/svg";
 
-async function handleEditPost(post) {
-    // Title
-    // Main content
-    // Media?
-    // Should update both the DOM as well as the post in the API database
-    // DOM: lastUpdated, title?, body?
-}
-
 function createProfileImage(image, name) {
     const avatar = image || "/images/userImageDefault.jpg";
     const profileImage = document.createElement("img");
@@ -97,7 +89,7 @@ function createEditButton(post) {
     editButton.append(editButtonIcon);
 
     editButton.addEventListener("click", () => {
-        handleEditPost(post);
+        window.location.href = `/feed/post/edit/?id=${post.id}`;
     });
 
     return editButton;
