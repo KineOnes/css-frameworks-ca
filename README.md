@@ -42,4 +42,6 @@ The branch: js2
 
 ```
 
-Trello board for project planning: https://trello.com/b/Ui6nlMjg/javascript2
+## Trello board for project planning:
+
+https://trello.com/b/Ui6nlMjg/javascript2
