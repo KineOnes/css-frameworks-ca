@@ -1,5 +1,5 @@
 {
-  "name": "css-frameworks-ca",
+  "name": "resit-css-frameworks",
   "version": "0.0.1",
   "description": "A social media platform for knitting entusiasts called Nøste. A place for them to connect and share their work. A login/refister form on index page, a profile page and a feed page.",
   "scripts": {
@@ -29,6 +29,8 @@
     "bootstrap": "^5.3.3"
   },
   "devDependencies": {
-    "sass": "^1.72.0"
-  }
+    "live-server": "^1.2.2",
+    "sass": "^1.74.0"
+  },
+  "main": "index.js"
 }

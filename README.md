@@ -1,12 +1,25 @@
-# css-frameworks-ca
+# js2-ca
 
-A responsive social media application built with Bootstrap and SASS.
+## Brief
 
-- Login/register page on index.html
-- Feed.html with a form to create posts and other users posts.
-- Profile.html with a profile description and several posts from the user.
+To apply knowledge of JavaScript techniques to implement the front-end functionality for a social media application.
 
-A searchbar in nav-bar on all pages.
+This assignment is building on my css-framework ca.
+
+## Required features
+
+Required features
+The following user stories are required for a passing submission:
+
+- User with @noroff.no or @stud.noroff.no email can register profile
+- Registered user can login
+- User can view a post content feed
+- User can filter the post content feed
+- User can search the post content feed
+- User can view a post content item by ID
+- User can create a post content item
+- User can update a post content item
+- User can delete a post content item
 
 ## Built With
 
@@ -14,6 +27,7 @@ A searchbar in nav-bar on all pages.
 - HTML
 - Bootstrap
 - SASS
+- JavaScript
 
 ## Getting Started
 
@@ -24,10 +38,10 @@ Clone the repo:
 ```
 git@github.com:KineOnes/css-frameworks-ca.git
 
-The branch: 2css-frameworks
+The branch: js2
 
 ```
 
-This was my first dive into the pool of framework and it was a bit overwhelming. I see all the benefits and impressive opportunities framework gives, but it is alot to wrap my head around.
+## Trello board for project planning:
 
-Excited to learn more!
+https://trello.com/b/Ui6nlMjg/javascript2

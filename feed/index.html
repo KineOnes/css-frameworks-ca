@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FEED</title>
+    <link rel="icon" href="/images/beige-knit.png" type="image" />
+    <link rel="stylesheet" href="/dist/css/index.css" />
+    <script src="/src/js/index.mjs" type="module"></script>
+
+    <script
+      src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+      defer></script>
+  </head>
+  <body
+    data-bs-theme="dark"
+    style="min-height: 100vh"
+    class="d-flex flex-column">
+    <header>
+      <div class="container">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="/profile">NØSTE</a>
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link" href="/profile">Profile</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="/feed"
+                    >Feed</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/">Logout</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <div class="container" style="max-width: 700px">
+        <div class="create-post">
+          <h1 class="title d-flex justify-content-center mt-3">Create post</h1>
+          <form id="createPostForm">
+            <div class="mb-3">
+              <input
+                type="text"
+                class="form-control"
+                name="title"
+                placeholder="Title"
+                required />
+            </div>
+            <div class="mb-3">
+              <textarea
+                class="form-control"
+                name="body"
+                rows="3"
+                placeholder="What's on you mind?"></textarea>
+            </div>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+              <button class="btn btn-primary me-md-2" type="submit">
+                Post
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="container mt-5" style="max-width: 700px">
+        <div class="row">
+          <div class="col">
+            <h3 class="title">Latest posts</h3>
+          </div>
+          <div class="col-auto">
+            <select class="form-select" id="selectForm">
+              <option value="all">All</option>
+              <option value="media">With media</option>
+              <option value="no-media">Without media</option>
+            </select>
+          </div>
+          <form id="searchForm" class="d-flex col">
+            <input
+              name="searchQuery"
+              class="form-control me-2"
+              type="text"
+              placeholder="Search"
+              aria-label="Search" />
+            <button type="submit" class="btn btn-primary">Search</button>
+          </form>
+        </div>
+      </div>
+
+      <div id="feed">
+        <!-- JS generated content -->
+      </div>
+    </main>
+  </body>
+</html>
