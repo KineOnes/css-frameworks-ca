@@ -2,18 +2,6 @@ import { request } from "./request.mjs";
 
 const action = "?_author=true&_reactions=true&_comments=true";
 
-/**
- * This function to fetch a single post by id when a post is clicked}
- * @param {number} id - the id number for the post clicked
- * @param {string} accessToken - the access token required for authentication
- * @returns 
- * @example 
- * ´´´js
- * //Use this function to fetch a single post by id when a post is clicked 
- * //on on the feed page
- * const response = await request(endpoint, "GET", data, accessToken);
- * //Redirect the user to a new page with the single post fetched by id
- */
 export async function getPostById(id, accessToken) {
     if (!id) { throw new Error("Missing id argument"); }
     if (!accessToken) { throw new Error("Missing access token"); }
@@ -30,16 +18,24 @@ export async function getPostById(id, accessToken) {
 }
 
 /**
- * This will fetch all posts from API with a 100 posts limit
+ * Fetches all posts from the social API with a 100 posts limit
+ *
+ * @async
+ * @function getAllPosts
  * @param {string} accessToken - the access token required for authentication
- * @param {number} limit - maximum number of posts to fetch per page
- * @param {number} page - the page number to fetch
- * @returns {Promise<Object>} 
+ * @param {number} limit - maximum number of posts to fetch per page (default: 100)
+ * @param {number} page - the page number to fetch (default: 1)
+ * @returns {Promise<Object>}
+ * @throws {Error} If the access token is not provided or the request encounters an error.
+ *
  * @example
  * ´´´js
- * //Use this function to fetch 100 posts from  the API
- * const response = await request(endpoint, "GET", data, accessToken);
- * // Display 100 posts on the feed page
+ * const accessToken = "example token";
+ * const response = getAllPosts(accessToken);
+ * if (response.success) {
+ *     const posts = response.data;
+ *     // Do something with the posts
+ * }
  * ´´´
  */
 export async function getAllPosts(accessToken, limit = 100, page = 1) {
