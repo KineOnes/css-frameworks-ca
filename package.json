@@ -1,8 +1,10 @@
 {
   "name": "css-frameworks-ca",
   "version": "0.0.1",
-  "description": "A starting point for the CSS Frameworks CA project",
+  "description": "A social media platform for knitting entusiasts called Nøste. A place for them to connect and share their work. A login/refister form on index page, a profile page and a feed page.",
   "scripts": {
+    "build": "sass src/scss:dist/css",
+    "watch": "sass --watch src/scss:dist/css & live-server",
     "test": "echo \"We will learn more about testing in the Workflow course\" && exit 1"
   },
   "repository": {
@@ -17,10 +19,16 @@
     "SCSS",
     "SASS"
   ],
-  "author": "Oliver Dipple <oliver.dipple@noroff.no>",
+  "author": "Kine Ones Verhaaf, Front-end developer, Noroff",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/NoroffFEU/css-frameworks-ca/issues"
   },
-  "homepage": "https://github.com/NoroffFEU/css-frameworks-ca#readme"
+  "homepage": "https://github.com/NoroffFEU/css-frameworks-ca#readme",
+  "dependencies": {
+    "bootstrap": "^5.3.3"
+  },
+  "devDependencies": {
+    "sass": "^1.72.0"
+  }
 }
